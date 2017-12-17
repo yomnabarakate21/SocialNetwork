@@ -5,4 +5,4 @@ var MyAppModel = mysqlModel.createConnection({
   password : '',
   database : 'SocialNetwork',
 });
-module.exports= MyAppModel;
+module.exports = MyAppModel;
