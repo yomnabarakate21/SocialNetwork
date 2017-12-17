@@ -1,0 +1,27 @@
+{
+  "name": "social_network",
+  "version": "1.0.0",
+  "description": "Database final project to implement a Social networking website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yomnabarakate21/SocialNetwork.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yomnabarakate21/SocialNetwork/issues"
+  },
+  "homepage": "https://github.com/yomnabarakate21/SocialNetwork#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongojs": "^2.4.1",
+    "mongoose": "^4.13.7",
+    "nodemon": "^1.13.3"
+  }
+}
