@@ -6,7 +6,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var index = require ('./routes/index');
-
+var post= require('./routes/post');
 //body parser middle ware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -20,12 +20,13 @@ app.engine('html',require('ejs').renderFile);
 
 
 //handle static files
-app.use('/assets', express.static(__dirname + '/assets'));
+app.use('/public/assets', express.static(__dirname + '/public/assets'));
 
 //fire controllers
 
 
 index(app);
+post(app);
 
 
 //

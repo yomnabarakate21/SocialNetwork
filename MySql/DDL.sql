@@ -2,9 +2,9 @@ CREATE DATABASE SocialNetwork;
 
 
 
-CREATE TABLE MyUser 
+CREATE TABLE MyUser
 (
-	
+
 	user_id int auto_increment not null,
 	firstname varchar(35) not null,
 	lastname varchar(35) not null,
@@ -14,16 +14,16 @@ CREATE TABLE MyUser
 	phone_number2 int ,
 	email varchar(35) not null,
 	gender varchar(6) not null,
-	birthdate date not null , 
+	birthdate date not null ,
 	profile_picture varchar(200),
 	hometown varchar(35),
 	marital_status 	varchar(8),
 	about_me varchar(255),
-	primary key (user_id)	
+	primary key (user_id)
 );
 
 
-CREATE TABLE Friendship 
+CREATE TABLE Friendship
 (
 user_id1 int not null,
 user_id2 int not null,
@@ -36,7 +36,7 @@ foreign key (user_id2) references MyUser (user_id)
 
 CREATE TABLE Post
 (
-post_id int not null,
+post_id int auto_increment not null,
 caption varchar(200) not null,
 image varchar(255),
 posted_time timestamp not null,
