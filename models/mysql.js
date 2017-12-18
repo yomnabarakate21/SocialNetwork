@@ -1,10 +1,8 @@
 var mysqlModel = require('mysql-model');
-var mysql = require('mysql');
 var MyAppModel = mysqlModel.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'SocialNetwork'
+  database : 'SocialNetwork',
 });
-
-module.exports= MyAppModel;
+module.exports = MyAppModel;
