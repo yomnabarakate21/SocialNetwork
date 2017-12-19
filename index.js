@@ -9,7 +9,7 @@ var index = require ('./routes/index');
 
 var post= require('./routes/post');
 var user= require('./routes/user');
-
+var search = require('./routes/search');
 var friendreq= require('./routes/friendreq');
 
 //body parser middle ware
@@ -34,7 +34,7 @@ index(app);
 user(app);
 post(app);
 friendreq(app);
-user(app);
+search(app);
 
 //
 
