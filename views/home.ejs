@@ -11,5 +11,10 @@
     <h1>Caption </h1>
     <input type ="text" name="caption" id="caption" placeholder="new item">
     <button type="button" id='btn' name='Submit'>Click me</button>
+    <ul>
+      <% for(var i=0;i<homedata.length;i++){%>
+        <li><a href="#"><%=homedata[i].firstname %> <%=homedata[i].lastname %></a></li>
+        <%}%>
+    </ul>
   </body>
   </html>

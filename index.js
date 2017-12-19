@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var app = express();
 var index = require ('./routes/index');
 var post= require('./routes/post');
+var user= require('./routes/user');
+var friendreq= require('./routes/friendreq');
+
 //body parser middle ware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -27,12 +30,13 @@ app.use('/public/assets', express.static(__dirname + '/public/assets'));
 
 index(app);
 post(app);
-
+friendreq(app);
+user(app);
 
 //
 
 
-var port = 4000;
+var port = 5000;
 //listen to the specified port
 app.listen(port, function(){
   console.log('Server started on port '+port);
