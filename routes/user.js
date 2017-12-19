@@ -16,23 +16,37 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
-var data = [];
+var info;
+
+function setValue(value) {
+  info = value;
+  for (var i = 0; i < info.length; i++) {
+    console.log(info[i].firstname);
+
+  }
+}
 module.exports = function(app) {
   app.get('/user/home/:id', function(req, res, next) {
-    con.query(" SELECT user_id,firstname,lastname FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendship.user_id1 =? OR Friendship.user_id2 =? )AND Friendship.status='0'))as t1  ON ((MyUser.user_id= t1.user_id1 OR MyUser.user_id= t1.user_id2) AND MyUser.user_id<>?) ", [req.params.id, req.params.id, req.params.id],
+    //get all the friends
+    con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendship.user_id1 =? OR Friendship.user_id2 =? )AND Friendship.status='0'))as t1  ON ((MyUser.user_id= t1.user_id1 OR MyUser.user_id= t1.user_id2) AND MyUser.user_id<>?) ", [req.params.id, req.params.id, req.params.id],
       function(err, rows, fields) {
-
-        for (var i = 0; i < rows.length; i++) {
-          console.log(rows[i]);
-
-
-        }
-        res.render('home.ejs', {
-          homedata: rows
-        });
+        setValue(rows);
 
       });
 
+    // query to get the info of the userhimself
+    var message = '';
+    var id = req.params.id;
+    con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
+      if (result.length <= 0)
+        message = "Profile not found!";
+      console.log(result[0].firstname);
+      res.render('home.ejs', {
+        data: result,
+        message: message,
+        friendsdata: info,
+      });
+    });
 
   });
 
@@ -40,9 +54,20 @@ module.exports = function(app) {
 
 
 
+
   app.get('/user/getprofile/:id', function(req, res, next) {
-    res.send("You are in the profile of the user of id" + req.params.id);
-    next();
+    var message = '';
+    var id = req.params.id;
+    con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
+      if (result.length <= 0)
+        message = "Profile not found!";
+      console.log(result[0].profile_picture);
+      res.render('home2.ejs', {
+        data: result,
+        message: message
+      });
+    });
+
   });
 
 

@@ -4,9 +4,12 @@
 var express = require ('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var app = express();
-var index = require ('./routes/index');
+var app = express(),
+http = require('http'),
+busboy = require("then-busboy"),
+fileUpload = require('express-fileupload');
 
+var index = require ('./routes/index');
 var post= require('./routes/post');
 var user= require('./routes/user');
 var search = require('./routes/search');
@@ -16,7 +19,7 @@ var friend= require('./routes/friend');
 //body parser middle ware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-
+app.use(fileUpload());
 
 //adjust views and ejs
 app.set('views',path.join(__dirname,'views'));
@@ -26,7 +29,7 @@ app.engine('html',require('ejs').renderFile);
 
 
 //handle static files
-app.use('/public/assets', express.static(__dirname + '/public/assets'));
+app.use('/public', express.static(__dirname + '/public'));
 
 //fire controllers
 
