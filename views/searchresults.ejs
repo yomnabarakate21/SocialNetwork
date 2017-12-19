@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+  <html>
+<head>
+
+  <title>search</title>
+
+</head>
+<body>
+  <h1>Search Page</h1>
+<form id='searchForm' >
+  <input type="text" id="firstname" name="firstname" placeholder="firstname"><br>
+   <input type="text" id="lastname" name="lastname" placeholder="lastname"><br>
+   <input type="text" id="email" name="email" placeholder="Email"><br>
+   <input type="text" id="hometown" name="hometown" placeholder="Hometown"><br>
+   <input type="text" id="caption" name="caption" placeholder="Caption"><br>
+   <input type="submit" id="submitSearchForm" name="submitSearchForm" value="search"><br>
+
+</form>
+
+
+<ul>
+  <% for(var i=0;i<results.length;i++){%>
+    <li><a href="/friend/profile/<%=results[i].user_id %>"><%=results[i].firstname %> <%=results[i].lastname %></a></li>
+    <%}%>
+</ul>
+
+
+</body>
+
+</html>
