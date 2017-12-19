@@ -13,7 +13,7 @@
     <button type="button" id='btn' name='Submit'>Click me</button>
     <ul>
       <% for(var i=0;i<homedata.length;i++){%>
-        <li><a href="#"><%=homedata[i].firstname %> <%=homedata[i].lastname %></a></li>
+        <li><a href="/friend/profile/<%=homedata[i].user_id %>"><%=homedata[i].firstname %> <%=homedata[i].lastname %></a></li>
         <%}%>
     </ul>
   </body>
