@@ -6,7 +6,9 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var index = require ('./routes/index');
+
 var post= require('./routes/post');
+var user= require('./routes/user');
 //body parser middle ware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -26,6 +28,7 @@ app.use('/public/assets', express.static(__dirname + '/public/assets'));
 
 
 index(app);
+user(app);
 post(app);
 
 

@@ -8,11 +8,10 @@ $(function() {
     var caption=$(' #caption');
     var searchquery={firstname:firstname.val(),lastname:lastname.val(),email:email.val(),hometown:hometown.val(),caption:caption.val()};
     console.log("I was submitted");
-
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       url: '/search',
       data:searchquery
     });
   });
-});
+  });
