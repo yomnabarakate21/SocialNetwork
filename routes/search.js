@@ -1,3 +1,4 @@
+var http = require('http');
 var mysql = require('../models/mysql-connection.js');
 var User = require('../models/user.js');
 var bodyParser = require('body-parser');
@@ -5,25 +6,38 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 var checkNullString = require('check-null-string');
-var json = require('json');
+
 var user = new User();
+
+
+
 module.exports = function(app){
-app.post('/search', urlencodedParser,function(req,res)
+app.get('/search', urlencodedParser, function(req, res)
 {
 
 
+res.render('search.ejs',
+{
+  searchResults:""}
+);
+}
+);
+
+//console.log("hi");
+app.post('/search', urlencodedParser, function(req, res){
 var firstname = req.body.firstname;
 var lastname = req.body.lastname;
 var email = req.body.email;
 var hometown = req.body.hometown;
 var caption = req.body.caption;
-console.log(email);
+console.log(firstname);
 
 
 
 if(checkNullString(firstname) && checkNullString(lastname) && checkNullString(email) && checkNullString(hometown ) && checkNullString(caption) )
-{
 
+{
+  console.log("hinulllll");
 }
 
 else {
@@ -39,25 +53,46 @@ else {
     if(checkNullString(caption)===false)
     myQuery += " AND email like " + mysql.escape('%'+caption+'%');
 
-    console.log(myQuery);
-
-    user.query(myQuery,function(err,result)
-  {
+    user.query(myQuery,function(err,rows,fields)
+{
      if (err){ throw err;
             console.log(err);
 
      }
 
      else { //results
-console.log(result);
+       for (var i = 0; i < rows.length; i++) {
+         console.log(rows[i]);
+
+
+       }
+
+
+       res.render('search.ejs', {
+         searchResults : rows
+       });
+
 
      }
+   });
 
-  }
-);
-}
-});
-app.get('/search', urlencodedParser, function(req,res){
-  res.render('search');
-});
+
+ }});
+
+
+
+/*
+app.get('/search', function(req, res, next) {
+  res.send("You are in the profile of the user of id" + req.params.id);
+  next();
+
+
+});*/
+/*app.post('/search', urlencodedParser, function(req, res) {
+
+
+
+});*/
+
+
 }

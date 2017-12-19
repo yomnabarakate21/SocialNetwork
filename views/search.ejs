@@ -16,9 +16,21 @@
    <input type="text" id="caption" name="caption" placeholder="Caption"><br>
    <input type="submit" id="submitSearchForm" name="submitSearchForm" value="search"><br>
 
-
-
 </form>
+
+
+   <ul>
+
+     <% for(var i=0;i<searchResults.length;i++){%>
+       <li><a href="/friend/profile/<%=searchResults[i].user_id %>"><%=searchResults[i].firstname %> <%=searchResults[i].lastname %></a></li>
+       <%}%>
+
+
+
+
+   </ul>
+
+
 </body>
 
 </html>

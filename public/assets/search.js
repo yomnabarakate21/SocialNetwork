@@ -1,6 +1,6 @@
 $(function() {
 
-  $("#searchForm").submit(function() {
+  $("#submitSearchForm").click(function() {
     var firstname=$('#firstname');
     var lastname=$('#lastname');
     var email=$('#email');
