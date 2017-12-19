@@ -35,6 +35,7 @@ mypost.query("SELECT caption,ispublic, firstname FROM Post JOIN MyUser ON Post.p
       ispublic: req.body.ispublic,
     });
     mypost.save();
+    res.json(mypost);
 
   });
 
