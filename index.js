@@ -6,7 +6,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var index = require ('./routes/index');
-
+var searchresults = require('./routes/searchresults');
 var post= require('./routes/post');
 var user= require('./routes/user');
 var search = require('./routes/search');
@@ -37,6 +37,7 @@ post(app);
 friendreq(app);
 search(app);
 friend(app);
+searchresults(app);
 
 //
 
