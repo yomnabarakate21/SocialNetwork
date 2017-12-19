@@ -11,6 +11,7 @@ var post= require('./routes/post');
 var user= require('./routes/user');
 var search = require('./routes/search');
 var friendreq= require('./routes/friendreq');
+var friend= require('./routes/friend');
 
 //body parser middle ware
 app.use(bodyParser.json());
@@ -35,6 +36,7 @@ user(app);
 post(app);
 friendreq(app);
 search(app);
+friend(app);
 
 //
 
