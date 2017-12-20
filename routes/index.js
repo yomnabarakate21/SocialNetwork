@@ -6,7 +6,7 @@
   });
 }
 */
-var db = require('../models/mysql-connection.js');
+/*var db = require('../models/mysql-connection.js');
 module.exports = function(app){
     message = '';
    app.post('/',function(req,res,next){
@@ -60,4 +60,4 @@ console.log('this format isnt allowed');
    });
 };
 */
-}
+//}

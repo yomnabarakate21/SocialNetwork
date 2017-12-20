@@ -15,6 +15,9 @@ var user= require('./routes/user');
 var search = require('./routes/search');
 var friendreq= require('./routes/friendreq');
 var friend= require('./routes/friend');
+var signup= require('./routes/signup');
+var login= require('./routes/login');
+var edituser= require('./routes/edituser');
 
 //body parser middle ware
 app.use(bodyParser.json());
@@ -34,12 +37,15 @@ app.use('/public', express.static(__dirname + '/public'));
 //fire controllers
 
 
-index(app);
+//index(app);
 user(app);
 post(app);
 friendreq(app);
 search(app);
 friend(app);
+signup(app);
+login(app);
+edituser(app);
 
 //
 

@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title> Log In</title>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="/public/assets/edituser.js" type="text/javascript"> </script>
+
+</head>
+<div class="edit" name="edit" >
+  <h2> Edit </h2>
+<form>
+  <label> First Name :</label>
+  <br>
+  <label> <%=data[0].firstname%>  </label>
+  <br>
+  <input type="text" name="firstname" id = "firstname">
+<br>
+  <br>
+  <label> Last Name : </label>
+  <br>
+  <label> <%=data[0].lastname%>  </label>
+  <br>
+  <input type="text" name="lastname" id="lastname" >
+<br>
+<label> Nick Name : </label>
+<br>
+<label> <%=data[0].nickname%>  </label>
+<br>
+<input type="text" name="nickname" id="nickname" >
+<br>
+<label>Current Password: </label>
+<br>
+<label> ********  </label>
+<br>
+<input type="text" id="password" >
+<br>
+<label>New Password: </label>
+<br>
+<label> ********  </label>
+<br>
+<input type="text" id="password_1" >
+<br>
+<label>First Phone Number : </label>
+<br>
+<label> <%=data[0].phone_number1%>  </label>
+<br>
+<input type="number"  id="phone_number1" >
+<br>
+<label> Home Town : </label>
+<br>
+<label> <%=data[0].hometown%>  </label>
+<br>
+<input type="text" id="hometown" >
+<br>
+
+<input id="submit_btn" type="submit" value="submit">
+</div>

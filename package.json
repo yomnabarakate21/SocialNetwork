@@ -23,13 +23,16 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
+    "js-md5": "^0.7.3",
     "json": "^9.0.6",
+    "md5": "^2.2.1",
     "mongojs": "^2.4.1",
     "mongoose": "^4.13.7",
     "mysql": "^2.15.0",
     "mysql-model": "0.0.2",
     "nodemon": "^1.13.3",
     "then-busboy": "^2.1.4",
+    "thread-sleep": "^2.0.0",
     "underscore": "^1.8.3"
   }
 }
