@@ -1,0 +1,8 @@
+<h1>RESULTS </h1>
+
+
+<ul>
+  <% for(var i=0;i<results.length;i++){%>
+    <li><a href="/friend/profile/<%=results[i].user_id %>"><%=results[i].firstname %> <%=results[i].lastname %></a></li>
+    <%}%>
+</ul>
