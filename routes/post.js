@@ -9,14 +9,6 @@ module.exports = function(app) {
   app.get('/post', function(req, res) {
   mypost=new Posts();
   res.render('home.ejs');
-
-
-  /*mypost.find('all', {where: "ispublic = '1'" }, function(err, rows) {
-      for(var i=0; i<rows.length; i++) {
-          console.log(rows[i]);
-      }
-  });
-*/
 mypost.query("SELECT caption,ispublic, firstname FROM Post JOIN MyUser ON Post.poster_id =MyUser.user_id", function(err, rows, fields) {
   for(var i=0; i<rows.length; i++) {
       console.log(rows[i]);

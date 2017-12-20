@@ -1,9 +1,10 @@
 
 
-$(function(event){
-  event.preventDefault();
-  $("#submit_btn").click(function(){
+$(function(){
 
+$("#submit_btn").click(function(event  ){
+  event.preventDefault();
+//alert('signing in');
     var fname=$("#Firstname");
     var lname=$("#LastName");
     var NickName=$("#NickName");
@@ -36,13 +37,15 @@ $.ajax ({
   url: '/signup',
   data:user,
   success: function(data){
-    alert(data.id);
-  console.log('hello');
+    console.log('hello');
+    alert('data'+data.id);
+  window.location.href = "/user/home/"+data.id;
 },
 error: function(error){
   if(error.responseText=='showAlert')
   alert("this Email Already exist");
-
+  if(error.responseText=='showAlert1')
+  alert("please complete your form");
 }
 });
 
@@ -79,7 +82,7 @@ $(function(){
     $("#sign_in_btn").click(function(){
     //  alert('poij;');
   //res.render('login.ejs');
-  window.location.href = "http://localhost:4001/login";
+  window.location.href = "/login";
 
 });
 });

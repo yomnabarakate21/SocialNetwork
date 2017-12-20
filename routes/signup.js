@@ -7,7 +7,7 @@ var con = mysql.createConnection({
   password: "",
   database: "SocialNetwork"
 });
-
+var sleep = require('thread-sleep');
 var User = require('../models/user');
 var bodyParser = require('body-parser');
 
@@ -25,6 +25,8 @@ module.exports = function(app){
 
   app.post('/signup', urlencodedParser, function(req, res) {
 console.log('adding a user '+req.body.Email);
+if(req.body.firstname!=""&&req.body.lastname!=""&&req.body.nickname!=""&&req.body.password!=""&&req.body.birthdate!=""){
+console.log('hello'+req.body.birthdate)
 con.query("SELECT user_id FROM MyUser WHERE (MyUser.email =?) ", [req.body.Email],
   function(err, rows, fields) {
 if (rows==undefined||rows!="")
@@ -54,18 +56,22 @@ console.log( 'was '+req.body.password +'is '+ encrypt_pass);
 
 
    user.save();
-     res.json(user);
-   console.log(' user added '+req.body.firstname);
-// /   myuser=new User();
-//    myuser.find('', function(err, row) {
-//   console.log(row[0].user_id);
-// });
-   //res.send({id:})
-   con.query("SELECT user_id FROM MyUser WHERE (MyUser.email =?) ", [req.body.Email],
-     function(err, rows, fields) {_
-res.send({id:rows[0].user_id});
-     });
+        console.log(' user added '+req.body.firstname);
+
+   con.query("SELECT COUNT(user_id) as t FROM MyUser",function(err, rows, fields) {
+  //   console.log('helllo');
+if(rows.length>0){
+ var s=rows[0].t+1;
+ console.log('pp: '+s);
+ console.log(rows);
+       res.send({id:s});
+     }
+   });
 }
 });
+}
+else {
+    res.send(500,'showAlert1');
+}
 });
 }
