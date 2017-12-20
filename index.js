@@ -42,7 +42,7 @@ searchresults(app);
 //
 
 
-var port = 5000;
+var port = 8000;
 //listen to the specified port
 app.listen(port, function(){
   console.log('Server started on port '+port);

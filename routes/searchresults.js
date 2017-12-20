@@ -21,14 +21,14 @@ var lastname = req.body.lastname;
 var email = req.body.email;
 var hometown = req.body.hometown;
 var caption = req.body.caption;
-console.log(firstname);
+
 
 
 
 if(checkNullString(firstname) && checkNullString(lastname) && checkNullString(email) && checkNullString(hometown ) && checkNullString(caption) )
 
 {
-  console.log("hinulllll");
+  console.log("hi  nulllll");
 }
 
 else {
@@ -52,25 +52,19 @@ else {
      }
 
      else { //results
-       for (var i = 0; i < rows.length; i++) {
-         console.log(rows[i]);
-
-
-       }
-
-app.post('/searchresults', urlencodedParser, function(req, res){
-       res.render('searchresults.ejs', {
-         results : rows
-       });
+      // console.log(rows[0].firstname);
+       console.log('PLEASE SUCCEED :( ');
+        res.json(data={name:'AHMED', age:'13'});
 
 
      }
-   );
+   });
 
 
- }});
+ }
+});//end of app.post
 
-
+}//end of fn
 
 /*
 app.get('/search', function(req, res, next) {
@@ -84,8 +78,3 @@ app.get('/search', function(req, res, next) {
 
 
 });*/
-
-
-}
-});
-}
