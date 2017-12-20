@@ -21,7 +21,7 @@ var lastname = req.body.lastname;
 var email = req.body.email;
 var hometown = req.body.hometown;
 var caption = req.body.caption;
-
+var data=[];
 
 
 
@@ -52,9 +52,13 @@ else {
      }
 
      else { //results
-      // console.log(rows[0].firstname);
+
        console.log('PLEASE SUCCEED :( ');
-        res.json(data={name:'AHMED', age:'13'});
+       for(var i=0; i<rows.length; i++) {
+         data.push(rows[i]);
+
+       }
+        res.json(data);
 
 
      }
