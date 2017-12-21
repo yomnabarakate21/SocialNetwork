@@ -17,7 +17,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 module.exports = function(app){
-  app.get('/user/editprofile/:id', function(req, res,next){
+  app.get('/editprofile/:id', function(req, res,next){
   id=req.params.id;
     con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?",req.params.id,function(err,rows, fields) {
           console.log('hi');
