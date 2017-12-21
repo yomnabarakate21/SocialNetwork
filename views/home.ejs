@@ -46,18 +46,26 @@
               </div>
             </div>
             <% } %>
-              <ul>
-                <% for(var i=0;i<postsdata.length;i++){%>
-                  <li>
-                    <a href="#>">
-
-                        <%=postsdata[i].caption %>
-                    </a>
-                  </li>
-                  <%}%>
-              </ul>
-
       </div>
+    </div>
+    <div class=posts>
+      <h2>POSTS</h2>
+      <ul>
+        <%if (postsdata.length>0){
+        for(var i=0;i<postsdata.length;i++){%>
+          <li>
+            <a href="#>">
+
+                <%=postsdata[i].firstname %>  <%=postsdata[i].lastname %>
+            </a>
+            <br>
+            <%=postsdata[i].caption %>
+          </li>
+          <%}}
+          else{%>
+            <h4>NO POSTS TO DISPLAY! </h4>
+            <%} %>
+      </ul>
     </div>
   </body>
 

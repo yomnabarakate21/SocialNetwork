@@ -19,7 +19,7 @@ var posts_info;
 var ids = [];
 
 function setids(friends_ids, callback) {
-
+  ids=[];
   for (var i = 0; i < friends_ids.length; i++) {
     ids.push(friends_ids[i].user_id);
   }
@@ -31,15 +31,17 @@ function setids(friends_ids, callback) {
 function setValue(value) {
   info = value;
   for (var i = 0; i < info.length; i++) {
-    //console.log(info[i].firstname);
+
 
   }
 }
 
 function setPost(post) {
+
   posts_info = post;
+  console.log('new');
   for (var i = 0; i < posts_info.length; i++) {
-    //console.log(posts_info[i].caption);
+    console.log(posts_info[i].firstname + posts_info[i].caption );
 
   }
 }
@@ -49,12 +51,12 @@ module.exports = function(app) {
     //get all the friends
     con.query(" SELECT user_id FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendship.user_id1 =? OR Friendship.user_id2 =? )AND Friendship.status='0'))as t1  ON ((MyUser.user_id= t1.user_id1 OR MyUser.user_id= t1.user_id2) AND MyUser.user_id<>?) ", [req.params.id, req.params.id, req.params.id],
       function(err, rows, fields) {
-        if (err) throw err;
+        if (err) console.log('error');
         setids(rows, function() {
           if (ids.length > 0) {
-            con.query("SELECT * FROM Post WHERE Post.poster_id IN (" + ids.join() + ")",
+            con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id IN (" + ids.join() + ")) AS t1 ON MyUser.user_id= t1.poster_id ",
               function(err, rows2, fields) {
-                if (err) throw err;
+                if (err) console.log('eror');
                 setPost(rows2);
                 var message = '';
                 con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
@@ -67,13 +69,19 @@ module.exports = function(app) {
                   });
                 });
               });
-          }
-          else{
-            res.render('home.ejs', {
-              data: result,
-              message: message,
-              postsdata: posts_info,
+          } else {
+            console.log('m3ndeeesh so7ab');
+            posts_info=[];
+            con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
+              if (result.length <= 0)
+                message = "Profile not found!";
+              res.render('home.ejs', {
+                data: result,
+                message: message,
+                postsdata: posts_info,
+              });
             });
+
           }
 
         });
@@ -97,7 +105,7 @@ module.exports = function(app) {
 
       });
     //get all user posts
-    con.query("SELECT * FROM Post WHERE Post.poster_id=? ", id,
+    con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? ) AS t1 ON MyUser.user_id = t1.poster_id ", id,
       function(err, rows2, fields) {
         setPost(rows2);
       });

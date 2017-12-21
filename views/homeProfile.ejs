@@ -10,67 +10,77 @@
 
   <body>
     <% include partials/nav.ejs %>
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
-        <% if (message.length > 0) { %>
-          <div class="alert alert-danger col-sm-12">
-            <%= message %>
-          </div>
-          <% } else {%>
-            <div class="panel panel-info">
-              <div class="panel-heading">
-                <h3 class="panel-title"><%=data[0].firstname%>, <%=data[0].lastname%></h3>
-              </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=data[0].profile_picture%>" class="img-circle img-responsive"> </div>
-                  <div class=" col-md-9 col-lg-9 ">
-                    <table class="table table-user-information">
-                      <tbody>
-                        <tr>
-                          <td>User Name:</td>
-                          <td>
-                            <%=data[0].nickname%>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Mobile:</td>
-                          <td>
-                            <%=data[0].phone_number1%>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
+          <% if (message.length > 0) { %>
+            <div class="alert alert-danger col-sm-12">
+              <%= message %>
+            </div>
+            <% } else {%>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><%=data[0].firstname%>, <%=data[0].lastname%></h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=data[0].profile_picture%>" class="img-circle img-responsive"> </div>
+                    <div class=" col-md-9 col-lg-9 ">
+                      <table class="table table-user-information">
+                        <tbody>
+                          <tr>
+                            <td>User Name:</td>
+                            <td>
+                              <%=data[0].nickname%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Mobile:</td>
+                            <td>
+                              <%=data[0].phone_number1%>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <% } %>
-              //freinds
-              <ul>
-                <% for(var i=0;i<friendsdata.length;i++){%>
-                  <li>
-                    <a href="/friend/profile/<%=friendsdata.user_id %>">
-                      <%=friendsdata[i].firstname %>
-                        <%friendsdata[i].lastname %>
-                    </a>
-                  </li>
-                  <%}%>
-              </ul>
-              //posts_info
-              <ul>
-                <% for(var i=0;i<postsdata.length;i++){%>
-                  <li>
-                    <a href="#>">
-                      <%=postsdata[i].poster_id%>
-                        <%=postsdata[i].caption %>
-                    </a>
-                  </li>
-                  <%}%>
-              </ul>
+              <% } %>
+                <div class=friends>
+                  <h2>Friends</h2>
+                  <ul>
+                    <% for(var i=0;i<friendsdata.length;i++){%>
+                      <li>
+                        <a href="/friend/profile/<%=friendsdata[i].user_id%>">
+                          <%=friendsdata[i].firstname %>
+                            <%=friendsdata[i].lastname %>
+                        </a>
+                      </li>
+                      <%}%>
+                  </ul>
+                </div>
+                <div class=p osts>
+                  <h2>Posts</h2>
+                  <ul>
+                    <%if (postsdata.length>0){
+                for(var i=0;i<postsdata.length;i++){%>
+                      <li>
+                        <a href="#>">
 
+                          <%=postsdata[i].firstname %>
+                            <%=postsdata[i].lastname %>
+                        </a>
+                        <br>
+                        <%=postsdata[i].caption %>
+                      </li>
+                      <%}}
+                  else{%>
+                        <h4>NO POSTS TO DISPLAY! </h4>
+                        <%} %>
+                  </ul>
+                </div>
+        </div>
       </div>
-    </div>
   </body>
 
   </html>
