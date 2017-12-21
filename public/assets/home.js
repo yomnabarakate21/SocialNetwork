@@ -1,11 +1,14 @@
 $(function() {
 
-  $("#btn").click(function() {
+  $("#post_btn").click(function() {
+  var id=$("#id_label");
     var caption = $("#caption");
+    var privacy=$("#privacy");
+      alert(privacy.val());
     var todo = {
       caption: caption.val(),
-      poster_id: '1',
-      ispublic: '0'
+      poster_id: id.text(),
+      ispublic: privacy.val(),
     };
     console.log('I was pressed');
     $.ajax({
@@ -13,9 +16,10 @@ $(function() {
       url: '/post',
       data: todo,
       success: function(data) {
-        $('#caption').val("");
-
-      }
+      alert('posted!');
+      $("#caption").val('');
+    }
     });
+
   });
 });
