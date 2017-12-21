@@ -4,19 +4,28 @@
 var express = require ('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var app = express();
-var index = require ('./routes/index');
+
+var app = express(),
+http = require('http'),
+busboy = require("then-busboy"),
+fileUpload = require('express-fileupload');
 var searchresults = require('./routes/searchresults');
+var index = require ('./routes/index');
+
+
 var post= require('./routes/post');
 var user= require('./routes/user');
 var search = require('./routes/search');
 var friendreq= require('./routes/friendreq');
 var friend= require('./routes/friend');
+var signup= require('./routes/signup');
+var login= require('./routes/login');
+var edituser= require('./routes/edituser');
 
 //body parser middle ware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-
+app.use(fileUpload());
 
 //adjust views and ejs
 app.set('views',path.join(__dirname,'views'));
@@ -26,7 +35,7 @@ app.engine('html',require('ejs').renderFile);
 
 
 //handle static files
-app.use('/public/assets', express.static(__dirname + '/public/assets'));
+app.use('/public', express.static(__dirname + '/public'));
 
 //fire controllers
 
@@ -37,12 +46,15 @@ post(app);
 friendreq(app);
 search(app);
 friend(app);
+
+signup(app);
+login(app);
+edituser(app);
 searchresults(app);
 
-//
 
 
-var port = 8000;
+var port = 4001;
 //listen to the specified port
 app.listen(port, function(){
   console.log('Server started on port '+port);

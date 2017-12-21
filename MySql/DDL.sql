@@ -9,7 +9,7 @@ CREATE TABLE MyUser
 	firstname varchar(35) not null,
 	lastname varchar(35) not null,
 	nickname varchar(35),
-	password  BINARY(64) not null,
+	password  varchar(35) not null,
 	phone_number1 int ,
 	phone_number2 int ,
 	email varchar(35) not null,

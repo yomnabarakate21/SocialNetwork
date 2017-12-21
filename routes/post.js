@@ -6,17 +6,9 @@ var urlencodedParser = bodyParser.urlencoded({
 
 module.exports = function(app) {
   //get all public posts in the posts table
-  app.get('/post', function(req, res) {
+  /*app.get('/post', function(req, res) {
   mypost=new Posts();
   res.render('home.ejs');
-
-
-  /*mypost.find('all', {where: "ispublic = '1'" }, function(err, rows) {
-      for(var i=0; i<rows.length; i++) {
-          console.log(rows[i]);
-      }
-  });
-*/
 mypost.query("SELECT caption,ispublic, firstname FROM Post JOIN MyUser ON Post.poster_id =MyUser.user_id", function(err, rows, fields) {
   for(var i=0; i<rows.length; i++) {
       console.log(rows[i]);
@@ -24,7 +16,7 @@ mypost.query("SELECT caption,ispublic, firstname FROM Post JOIN MyUser ON Post.p
 });
 
   });
-
+*/
 
   //Add a new post to the post Table
   app.post('/post', urlencodedParser, function(req, res) {
@@ -35,7 +27,7 @@ mypost.query("SELECT caption,ispublic, firstname FROM Post JOIN MyUser ON Post.p
       ispublic: req.body.ispublic,
     });
     mypost.save();
-    res.json(mypost);
+    res.send(mypost);
 
   });
 

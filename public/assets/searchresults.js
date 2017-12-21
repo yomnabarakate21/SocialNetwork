@@ -23,7 +23,6 @@ $(function() {
         alert('Success!');
           var result="";
         for (i = 0; i < data.length; i++) {
-          //$("#balawi").append(document.createTextNode(data[i].firstname));
           result += '<a href="#">' + data[i].firstname + '</a> <br />' ;
 
             }
