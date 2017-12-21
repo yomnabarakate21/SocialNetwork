@@ -34,17 +34,19 @@ module.exports = function(app){
 
     						var query = db.query(sql, function(err, result) {
                   console.log('am here! and near');
+
     							 res.redirect('/user/home/'+result.insertId);
+
     						});
 					   });
           } else {
           //  message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
+
 console.log('this format isnt allowed');
+
             //res.render('index.ejs',{message: message});
           }
    });
-
-
 
 
    app.get('/',function(req,res,next){

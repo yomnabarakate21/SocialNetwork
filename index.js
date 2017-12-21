@@ -4,12 +4,15 @@
 var express = require ('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+
 var app = express(),
 http = require('http'),
 busboy = require("then-busboy"),
 fileUpload = require('express-fileupload');
-
+var searchresults = require('./routes/searchresults');
 var index = require ('./routes/index');
+
+
 var post= require('./routes/post');
 var user= require('./routes/user');
 var search = require('./routes/search');
@@ -43,11 +46,12 @@ post(app);
 friendreq(app);
 search(app);
 friend(app);
+
 signup(app);
 login(app);
 edituser(app);
+searchresults(app);
 
-//
 
 
 var port = 4001;
