@@ -1,4 +1,3 @@
-
 var mysql = require('mysql');
 var md5 = require('md5');
 var con = mysql.createConnection({
@@ -15,63 +14,67 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 
-module.exports = function(app){
-  app.get('/signup', function(req, res){
-//user=new User();
+module.exports = function(app) {
+  app.get('/signup', function(req, res) {
     res.render('signup.ejs');
 
   });
 
 
   app.post('/signup', urlencodedParser, function(req, res) {
-console.log('adding a user '+req.body.Email);
-if(req.body.firstname!=""&&req.body.lastname!=""&&req.body.nickname!=""&&req.body.password!=""&&req.body.birthdate!=""){
-console.log('hello'+req.body.birthdate)
-con.query("SELECT user_id FROM MyUser WHERE (MyUser.email =?) ", [req.body.Email],
-  function(err, rows, fields) {
-if (rows==undefined||rows!="")
-    {
-      console.log('fashlaaa');
-      res.send(500,'showAlert');
-    console.log(rows);
+      var post = req.body;
+      var name = post.user_name;
+      var pass = post.password;
+      var fname = post.first_name;
+      var lname = post.last_name;
+      var mob = post.mob_no;
 
+      if (req.body.firstname != "" && req.body.lastname != "" && req.body.nickname != "" && req.body.password != "" && req.body.birthdate != "") {
+        console.log('hello' + req.body.birthdate)
+        con.query("SELECT user_id FROM MyUser WHERE (MyUser.email =?) ", [req.body.Email],
+          function(err, rows, fields) {
+            if (rows == undefined || rows != "") {
+
+              res.send(500, 'showAlert');
+              console.log(rows);
+
+            } else {
+
+              if (!req.files)
+                return res.status(400).send('No files were uploaded.');
+
+              var file = req.files.uploaded_image;
+              var img_name = file.name;
+
+              if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+
+                file.mv('public/images/upload_images/' + file.name, function(err) {
+
+                  if (err)
+
+                    return res.status(500).send(err);
+                  var encrypt_pass = md5(req.body.password);
+                  var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','" + img_name + "')";
+
+                  var query = db.query(sql, function(err, result) {
+                    console.log('am here! and near');
+                    res.send(result[i]);
+
+                  });
+                });
+
+
+              } else {
+                //  message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
+                console.log('this format isnt allowed');
+                //res.render('index.ejs',{message: message});
+              }
+            }
+
+          //res.redirect('profile/'+result.insertId);
+        });
     }
-    else
-    {
-var encrypt_pass=md5(req.body.password);
-console.log( 'was '+req.body.password +'is '+ encrypt_pass);
-  user= new User ({
-    firstname:req.body.firstname,
-    lastname:req.body.lastname,
-  nickname:req.body.nickname,
-  password:encrypt_pass,
-  phone_number1:req.body.phone_number1,
-  email:req.body.Email,
-  gender:req.body.gender,
-  birthdate:req.body.birthdate,
-  hometown:req.body.hometown,
-  marital_status:req.body.marital_status,
-  about_me:req.body.about_me,
-});
+  });
 
 
-   user.save();
-        console.log(' user added '+req.body.firstname);
-
-   con.query("SELECT COUNT(user_id) as t FROM MyUser",function(err, rows, fields) {
-  //   console.log('helllo');
-if(rows.length>0){
- var s=rows[0].t+1;
- console.log('pp: '+s);
- console.log(rows);
-       res.send({id:s});
-     }
-   });
-}
-});
-}
-else {
-    res.send(500,'showAlert1');
-}
-});
 }

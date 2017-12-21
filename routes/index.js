@@ -6,7 +6,7 @@
   });
 }
 */
-/*var db = require('../models/mysql-connection.js');
+var db = require('../models/mysql-connection.js');
 module.exports = function(app){
     message = '';
    app.post('/',function(req,res,next){
@@ -34,7 +34,7 @@ module.exports = function(app){
 
     						var query = db.query(sql, function(err, result) {
                   console.log('am here! and near');
-    							 //res.redirect('profile/'+result.insertId);
+    							 res.redirect('/user/home/'+result.insertId);
     						});
 					   });
           } else {
@@ -43,6 +43,9 @@ console.log('this format isnt allowed');
             //res.render('index.ejs',{message: message});
           }
    });
+
+
+
 
    app.get('/',function(req,res,next){
      res.render('index.html');
@@ -60,4 +63,4 @@ console.log('this format isnt allowed');
    });
 };
 */
-//}
+}

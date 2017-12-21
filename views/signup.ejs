@@ -1,104 +1,112 @@
 <!DOCTYPE html>
-  <html>
+<html>
+
 <head>
   <title> SignUp</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="/public/assets/adduser.js"> type="text/javascript"> </script>
+  <script src="/public/assets/adduser.js">
+    type = "text/javascript" >
+  </script>
 
 </head>
 
 <body>
 
-<div name ="sign_up" class="sign_up">
-  <h2> Sign Up </h2>
-  <div class="container">
-    <div class="left"></div>
-    <div class=right>
-      <div class="formbox">
-     <form id="sign_up_form"   name="sign_up_form"  >
-    <div class="sign_up_input" name="sign_up_input">
-  <label> Firstname </label>
-  <br>
-  <input type="text" name="Firstname" id= "Firstname" required>
-   <span  id="Fname_status"></span>
-  <br>
+  <div name="sign_up" class="sign_up">
+    <h2> Sign Up </h2>
+    <div class="container">
+      <div class="left"></div>
+      <div class=right>
+        <div class="formbox">
+          <form id="sign_up_form" name="sign_up_form">
+            <div class="sign_up_input" name="sign_up_input">
+              <label> Firstname </label>
+              <br>
+              <input type="text" name="Firstname" id="Firstname" required>
+              <span id="Fname_status"></span>
+              <br>
 
-  <label> Lastname </label>
-  <br>
-  <input type="text" name="LastName" id= "LastName"  required>
-   <span  id="Lname_status"></span>
-  <br>
+              <label> Lastname </label>
+              <br>
+              <input type="text" name="LastName" id="LastName" required>
+              <span id="Lname_status"></span>
+              <br>
 
-  <label> NickName </label>
-  <br>
-  <input type="text" name="NickName" id= "NickName" required>
-   <span  id="Nname_status"></span>
-  <br>
 
-  <label> PhoneNumber </label>
-  <br>
-  <input type="tel" name="number" id= "number" >
-   <br>
+              <label>Profile Image</label>
+              <br>
+              <input type="file" name="uploaded_image" accept="" />
+              <br>
+              <label> NickName </label>
+              <br>
+              <input type="text" name="NickName" id="NickName" required>
+              <span id="Nname_status"></span>
+              <br>
 
-   <label> BirthDate </label>
-   <br>
-   <input type="date" name="BirthDate" id= "BirthDate" required>
-    <br>
+              <label> PhoneNumber </label>
+              <br>
+              <input type="tel" name="number" id="number">
+              <br>
 
-    <label> gender </label>
-<br>
-    <select name="gender" id="gender">
+              <label> BirthDate </label>
+              <br>
+              <input type="date" name="BirthDate" id="BirthDate" required>
+              <br>
+
+              <label> gender </label>
+              <br>
+              <select name="gender" id="gender">
   <option value="Male">Male</option>
   <option value="Female">Female</option>
 </select>
-<br>
+              <br>
 
-<label> Martial Status </label>
-<br>
-<select name=Status id="Status">
+              <label> Martial Status </label>
+              <br>
+              <select name=Status id="Status">
 <option value="Engaged">Engaged</option>
 <option value="Married">Married</option>
 <option value="Single">Single</option>
 </select>
-<br>
+              <br>
 
-<label> about_me </label>
-<br>
-<input type="text" name="about_me" id= "about_me" >
- <br>
+              <label> about_me </label>
+              <br>
+              <input type="text" name="about_me" id="about_me">
+              <br>
 
-<label> Hometown </label>
-<br>
-<input type="text" name="Hometown" id= "Hometown" >
- <br>
+              <label> Hometown </label>
+              <br>
+              <input type="text" name="Hometown" id="Hometown">
+              <br>
 
-  <label> Email</label>
-  <br>
-  <input type="text" name="Email" id="Email" required>
-  <span  id="email_status"></span>
+              <label> Email</label>
+              <br>
+              <input type="text" name="Email" id="Email" required>
+              <span id="email_status"></span>
 
-  <br/>
-  <label> Password </label>
-   <br>
-  <input type="password" name="password" id="password" required>
-  <br>
-  <label> Confirm password </label>
-  <br>
-  <input type="password" name="password_1" id="confirmPassword"  >
+              <br/>
+              <label> Password </label>
+              <br>
+              <input type="password" name="password" id="password" required>
+              <br>
+              <label> Confirm password </label>
+              <br>
+              <input type="password" name="password_1" id="confirmPassword">
 
-  <br>
-  <div id="buttons">
-  <input id="submit_btn" type="submit" value="submit">
-  <button id="sign_in_btn" type="button"> Sign in </button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+              <br>
+              <div id="buttons">
+                <input id="submit_btn" type="submit" value="submit">
+                <button id="sign_in_btn" type="button"> Sign in </button>
+          </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

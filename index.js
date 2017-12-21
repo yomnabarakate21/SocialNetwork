@@ -37,7 +37,7 @@ app.use('/public', express.static(__dirname + '/public'));
 //fire controllers
 
 
-//index(app);
+index(app);
 user(app);
 post(app);
 friendreq(app);
