@@ -1,0 +1,101 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+</head>
+
+<body>
+  <div class="container col-sm-12" id="mainform">
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">Edit user</div>
+        </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form" method="post" action="/editprofile/<%=data[0].user_id%>" enctype="multipart/form-data">
+            <div class="alert alert-success col-sm-12">
+
+            </div>
+
+            <div id="signupalert" style="display:none" class="alert alert-danger">
+              <p>Error:</p>
+              <span></span>
+            </div>
+            <div class="form-group">
+              <label for="first_name" class="col-md-3 control-label">First Name</label>
+              <div class="col-md-9">
+                  <label  class="col-md-3 control-label"> <%=data[0].user_id %></label>
+                <input type="text" class="form-control" name="efirst_name" placeholder="First Name" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="last_name" class="col-md-3 control-label">Last Name</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="elast_name" placeholder="Last Name" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="home_town" class="col-md-3 control-label">Home Town</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="ehome_town" placeholder="Home Town">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mob_no" class="col-md-3 control-label">Mobile Number</label>
+              <div class="col-md-9">
+                <input type="number" class="form-control" name="emob_no" placeholder="Mobile Number">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="marital_status" class="col-md-3 control-label">Marital Status</label>
+              <div class="col-md-9">
+                <select class="col-md-9"  name="emarital_status">
+                  <option value="Single">Single</option>
+                  <option value="Engaged">Engaged</option>
+                  <option value="Married">Married</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mob_no" class="col-md-3 control-label">Profile Image</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="file" name="euploaded_image" accept="" />
+              </div>
+              </div>
+              <div class="form-group">
+                <label for="user_name" class="col-md-3 control-label">User Name</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" name="euser_name" placeholder="User Name" >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password" class="col-md-3 control-label">Old Password</label>
+                <div class="col-md-9">
+                  <input type="password" class="form-control" name="epassword" placeholder="Password" >
+                </div>
+              </div
+              <div class="form-group">
+                <label for="password" class="col-md-3 control-label">New password</label>
+                <div class="col-md-9">
+                  <input type="password" class="form-control" name="epassword_1" placeholder="Password" >
+                </div>
+              </div>
+              <div class="form-group">
+                <!-- Button -->
+                <div class="col-md-offset-3 col-md-9">
+                  <button id="edit_btn" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> Save changes</button>
+                </div>
+              </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

@@ -31,6 +31,7 @@
     "mysql": "^2.15.0",
     "mysql-model": "0.0.2",
     "nodemon": "^1.13.3",
+    "reload": "^2.2.2",
     "then-busboy": "^2.1.4",
     "thread-sleep": "^2.0.0",
     "underscore": "^1.8.3"
