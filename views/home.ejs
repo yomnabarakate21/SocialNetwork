@@ -13,7 +13,6 @@
 
   <body>
     <% include partials/nav.ejs %>
-      <label id="id_label" hidden><%=data[0].user_id%></label>
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
           <% if (message.length > 0) { %>
@@ -48,14 +47,19 @@
                       <div class=posts>
                         <div id="post_div">
                           <h2>What's New? </h2>
-                          <input id=caption></input>
+                          <form enctype="multipart/form-data" action="/post" method="POST">
+                            <input type="text" value="<%=data[0].user_id%>" for="id_label" name="id_label"id="id_label" hidden></input>
+                          <input for="caption" name="caption" id="caption"></input>
                           <br>
                           <select name="privacy" id="privacy">
                             <option value="1">Public</option>
                                <option value="0">Private</option>
                               </select>
+                              <h4>Media</h4>
+                              <input type="file" id='postpic' name="postpic"/>
                           <br>
-                          <button type="button" id="post_btn">POST</button>
+                          <button type="submit" id="postbtn">POST</button>
+                        </form>
                         </div>
                       </div>
                     </div>
@@ -63,16 +67,14 @@
                 </div>
               </div>
 
-          <div id="posts-div" class=posts>
+                <div id="posts-div" class=posts>
                         <h2>POSTS</h2>
                         <ul id="posts">
                           <%if (postsdata.length>0){
                         for(var i=0;i<postsdata.length;i++){%>
                             <li>
-
-                              <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>"" alt="profilepicture" height="60" width="60">
-                              <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].poster_id %>">
-
+                              <a id="post-a" href="/friend/profile/<%=postsdata[i].poster_id %>">
+                                <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img" >
                                 <%=postsdata[i].firstname %>
                                   <%=postsdata[i].lastname %>
                               </a>

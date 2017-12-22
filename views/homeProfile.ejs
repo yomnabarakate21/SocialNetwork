@@ -54,7 +54,7 @@
                     <% for(var i=0;i<friendsdata.length;i++){%>
                       <li>
 
-                          <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>"" alt="profilepicture" height="60" width="60">
+                          <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
                         <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
 
                           <%=friendsdata[i].firstname %>
@@ -70,13 +70,11 @@
                   <ul id="posts">
                     <%if (postsdata.length>0){
                 for(var i=0;i<postsdata.length;i++){%>
-                      <li><<<<<<< SignUp/New
-                          <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>"" alt="profilepicture" height="60" width="60">
+                      <li>
+                          <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
                         <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
 
-
-
-                          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img" >
+                          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img img-circle" >
                           <%=postsdata[i].firstname %>
                             <%=postsdata[i].lastname %>
                         </a>
