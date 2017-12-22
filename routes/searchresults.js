@@ -11,73 +11,69 @@ var user = new User();
 
 
 
-module.exports = function(app){
+module.exports = function(app) {
 
 
 
-app.post('/searchresults', urlencodedParser, function(req, res){
-var firstname = req.body.firstname;
-var lastname = req.body.lastname;
-var email = req.body.email;
-var hometown = req.body.hometown;
-var caption = req.body.caption;
-var data=[];
+  app.post('/searchresults', urlencodedParser, function(req, res) {
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var email = req.body.email;
+    var hometown = req.body.hometown;
+    var caption = req.body.caption;
+    var data = [];
 
 
 
-if(checkNullString(firstname) && checkNullString(lastname) && checkNullString(email) && checkNullString(hometown ) && checkNullString(caption) )
+    if (checkNullString(firstname) && checkNullString(lastname) && checkNullString(email) && checkNullString(hometown) && checkNullString(caption))
 
-{
-  console.log("hi  nulllll");
-}
+    {
+      console.log('missing data');
+      data=[];
+      console.log(data.length);
+      res.send(data);
+    }
+    else {
+      console.log('geet hena!');
+      var myQuery = "select * from MyUser where "
+      if (checkNullString(firstname) === false)
+        myQuery += " firstname = " + mysql.escape(firstname);
+      if (checkNullString(lastname) === false)
+        myQuery += " AND lastname = " + mysql.escape(lastname);
+      if (checkNullString(email) === false)
+        myQuery += " AND email = " + mysql.escape(email);
+      if (checkNullString(hometown) === false)
+        myQuery += " AND hometown = " + mysql.escape(hometown);
+      if (checkNullString(caption) === false)
+        myQuery += " AND email like " + mysql.escape('%' + caption + '%');
 
-else {
-    var myQuery = "select * from MyUser where "
-    if(checkNullString(firstname)===false)
-    myQuery += " firstname = " + mysql.escape(firstname);
-    if(checkNullString(lastname)===false)
-    myQuery += " AND lastname = " + mysql.escape(lastname);
-    if(checkNullString(email)===false)
-    myQuery += " AND email = " + mysql.escape(email);
-    if(checkNullString(hometown)===false)
-    myQuery += " AND hometown = " + mysql.escape(hometown);
-    if(checkNullString(caption)===false)
-    myQuery += " AND email like " + mysql.escape('%'+caption+'%');
+      user.query(myQuery, function(err, rows, fields) {
+        if (err) {
+          throw err;
+        } else { //results
 
-    user.query(myQuery,function(err,rows,fields)
-{
-     if (err){ throw err;
-            console.log(err);
+          for (var i = 0; i < rows.length; i++) {
+            data.push(rows[i]);
+            console.log(data[i].firstname);
+          }
+          console.log(data.length);
+          res.send(data);
 
-     }
+        }
+      });
+  }
+  }); //end of app.post
 
-     else { //results
+  //get the search page on requesting it.
+  app.get('/search/:id', function(req, res, next) {
+    id = req.params.id;
+    mysql.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", req.params.id, function(err, rows, fields) {
+      if (err) throw err;
+      res.render('search.ejs', {
+        data: rows
+      });
+      next();
+    });
 
-       console.log('PLEASE SUCCEED :( ');
-       for(var i=0; i<rows.length; i++) {
-         data.push(rows[i]);
-
-       }
-        res.json(data);
-
-
-     }
-   });
-
-
- }
-});//end of app.post
-
-
-
-
-app.get('/search/:id', function(req, res, next) {
-  id=req.params.id;
-    mysql.query("SELECT * FROM MyUser WHERE MyUser.user_id=?",req.params.id,function(err,rows, fields) {
-        if (err) throw err;
-        res.render('search.ejs',{data:rows});
-        next();
-        });
-
-});
-}//end of fn
+  }); //end of app.get
+} //end of fn
