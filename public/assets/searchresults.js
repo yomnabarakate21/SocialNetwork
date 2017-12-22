@@ -14,22 +14,27 @@ $(function() {
       hometown: hometown.val(),
       caption: caption.val()
     };
-    alert('I was submitted');
     $.ajax({
       type: 'POST',
       url: '/searchresults',
       data: searchquery,
       success: function(data) {
-        alert('Success!');
-          var result="";
-        for (i = 0; i < data.length; i++) {
-          result += '<a href="#">' + data[i].firstname + '</a> <br />' ;
-
-            }
-            $("#results").html(result);
+        if (data.length > 0) {
+          alert('success'+data.length);
+          var result = "";
+          for (i = 0; i < data.length; i++) {
+            result += '<a href="/friend/profile/'+ data[i].user_id +'">'+data[i].firstname +"  "+data[i].lastname+ '</a> <br />';
+              $("#results").html(result);
+          }
+        }
+      else{
+        alert('MISSING DATA!');
+      }
 
         }
-      });
+
 
     });
+
   });
+});
