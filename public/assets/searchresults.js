@@ -21,9 +21,9 @@ $(function() {
       success: function(data) {
         if (data.length > 0) {
           alert('success'+data.length);
-          var result = "";    ///////ERRRRRRRRRRRRRRRRORRRRRRRRRRRRRR
+          var result = "";
           for (i = 0; i < data.length; i++) {
-            result += '<a href=/friend/profile/'+data[i].user_id'>'+data[i].firstname +"  "+data[i].lastname+ '</a> <br />';
+            result += '<a href="/friend/profile/'+ data[i].user_id +'">'+data[i].firstname +"  "+data[i].lastname+ '</a> <br />';
               $("#results").html(result);
           }
         }
