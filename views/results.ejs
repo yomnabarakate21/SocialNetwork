@@ -1,7 +1,7 @@
-<h1>RESULTS </h1>
+<h1 style="color:#FF1493;">RESULTS </h1>
 
 
-<ul>
+<ul style="list-style-position:inside;  list-style-image: url('./circle.jpg');">
   <% for(var i=0;i<results.length;i++){%>
     <li><a href="/friend/profile/<%=results[i].user_id %>"><%=results[i].firstname %> <%=results[i].lastname %></a></li>
     <%}%>

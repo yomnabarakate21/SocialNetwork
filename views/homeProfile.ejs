@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>My profile</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/homeprofile.css" />
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
 
   </head>
 
@@ -52,6 +54,7 @@
                     <% for(var i=0;i<friendsdata.length;i++){%>
                       <li>
                         <a href="/friend/profile/<%=friendsdata[i].user_id %>">
+                          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" class="small-img" >
                           <%=friendsdata[i].firstname %>
                             <%=friendsdata[i].lastname %>
                         </a>
@@ -59,27 +62,31 @@
                       <%}%>
                   </ul>
                 </div>
-                <div class=p osts>
+                <div class=posts>
                   <h2>Posts</h2>
-                  <ul>
+                  <br>
+                  <ul id="posts">
                     <%if (postsdata.length>0){
                 for(var i=0;i<postsdata.length;i++){%>
                       <li>
-                        <a href="/friend/profile/<%=postsdata[i].poster_id %>">
+                        <a id="post-a" href="/friend/profile/<%=postsdata[i].poster_id %>">
 
-
+                          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img" >
                           <%=postsdata[i].firstname %>
                             <%=postsdata[i].lastname %>
                         </a>
-                        <br>
+                        <br><br><br>
+                        <span id="post-caption">
                         <%=postsdata[i].caption %>
+</span>
                       </li>
+                      <br>
                       <%}}
                   else{%>
                         <h4>NO POSTS TO DISPLAY! </h4>
                         <%} %>
                   </ul>
-                </div>
+                    </div>
         </div>
       </div>
   </body>
