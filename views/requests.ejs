@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Site</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="/public/assets/accept.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+          <h1>Friend Requests</h1>
+            <ul>
+              <%for(var i=0;i<friendsdata.length;i++){%>
+                <li>
+                  <a href="/friend/profile/<%=friendsdata[i].user_id %>">
+                    <%=friendsdata[i].firstname %>
+                      <%friendsdata[i].lastname; %>
+                  </a>
+                </li>
+                <button id="accept" name="accept" type="submit" value="<%=friendsdata[i].user_id%>">Accept</button>
+                <button name="ignore" type="submit" value="<%=friendsdata[i].user_id%>" >Ignore</button>
+
+                  <%}%>
+            </ul>
+
+    </div>
+  </div>
+</body>
+
+</html>

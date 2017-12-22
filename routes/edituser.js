@@ -15,7 +15,6 @@ var sleep = require('thread-sleep');
 var bodyParser = require('body-parser');
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
-
 module.exports = function(app){
   app.get('/editprofile/:id', function(req, res,next){
   id=req.params.id;
@@ -54,8 +53,10 @@ if (rows!=""){
 
 
 app.post('/user/editprofile/:id', function(req, res,next){
-//console.log('apdate');
-
+  if(req.files.image)
+  {
+    console.log('yarab');
+  }
   if(req.body.lastname!="")
   {
   console.log('uadating lastname: '+req.body.lastname);
@@ -97,6 +98,7 @@ console.log('uadating password: '+req.body.password_1);
 
   con.query("UPDATE MyUser SET password=? WHERE MyUser.user_id=?",[pass,id]);
 }
+
 else {
   res.status(500).send('showAlert');
   console.log('password 8alaat');
