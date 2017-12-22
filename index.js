@@ -9,16 +9,15 @@ var app = express(),
 http = require('http'),
 busboy = require("then-busboy"),
 fileUpload = require('express-fileupload');
+
 var searchresults = require('./routes/searchresults');
 var index = require ('./routes/index');
-
-
 var post= require('./routes/post');
 var user= require('./routes/user');
-var friendreq= require('./routes/friendreq');
+//var friendreq= require('./routes/friendreq');
 var getreq= require('./routes/getreq');
-
-var friend= require('./routes/friend');
+var friend= require('./routes/friendprofile');
+var friendreq=require('./routes/friendreq');
 var signup= require('./routes/signup');
 var login= require('./routes/login');
 var edituser= require('./routes/edituser');

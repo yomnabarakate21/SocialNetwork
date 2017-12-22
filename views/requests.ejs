@@ -1,4 +1,4 @@
-<html lang="en">
+<<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -11,17 +11,19 @@
 </head>
 
 <body>
+  <% include partials/nav.ejs %>
           <h1>Friend Requests</h1>
             <ul>
-              <%for(var i=0;i<friendsdata.length;i++){%>
+              <%for(var i=0;i<friendsdata.length;i++){ %>
                 <li>
-                  <a href="/friend/profile/<%=friendsdata[i].user_id %>">
-                    <%=friendsdata[i].firstname %>
+                  <a href="/friend/profile/<%=data%>/<%=friendsdata[i].user_id %>">
+                    <%=friendsdata[i].firstname; %>
                       <%friendsdata[i].lastname; %>
                   </a>
                 </li>
+
                 <button id="accept" name="accept" type="submit" value="<%=friendsdata[i].user_id%>">Accept</button>
-                <button name="ignore" type="submit" value="<%=friendsdata[i].user_id%>" >Ignore</button>
+                <button id="ignore" name="ignore" type="submit" value="<%=friendsdata[i].user_id%>" >Ignore</button>
 
                   <%}%>
             </ul>
@@ -31,3 +33,4 @@
 </body>
 
 </html>
+

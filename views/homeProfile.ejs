@@ -51,7 +51,7 @@
                   <ul>
                     <% for(var i=0;i<friendsdata.length;i++){%>
                       <li>
-                        <a href="/friend/profile/<%=friendsdata[i].user_id %>">
+                        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
                           <%=friendsdata[i].firstname %>
                             <%=friendsdata[i].lastname %>
                         </a>
@@ -59,13 +59,13 @@
                       <%}%>
                   </ul>
                 </div>
-                <div class=p osts>
+                <div class=posts>
                   <h2>Posts</h2>
                   <ul>
                     <%if (postsdata.length>0){
                 for(var i=0;i<postsdata.length;i++){%>
                       <li>
-                        <a href="/friend/profile/<%=postsdata[i].poster_id %>">
+                        <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
 
 
                           <%=postsdata[i].firstname %>

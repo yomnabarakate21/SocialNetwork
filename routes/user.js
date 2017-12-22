@@ -66,15 +66,22 @@ module.exports = function(app) {
               });
           } else {
             posts_info=[];
-            con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
-              if (result.length <= 0)
-                message = "Profile not found!";
-              res.render('home.ejs', {
-                data: result,
-                message: message,
-                postsdata: posts_info,
+            con.query("SELECT * FROM Post JOIN MyUser ON MyUser.user_id= Post.poster_id WHERE Post.ispublic='1'",function(err,presult){
+              for(var i=0;i<presult.length;i++){
+                console.log(presult[i].firstname + " " +presult[i].poster_id);
+              }
+              con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
+
+                if (result.length <= 0)
+                  message = "Profile not found!";
+                res.render('home.ejs', {
+                  data: result,
+                  message: message,
+                  postsdata: presult,
+                });
               });
             });
+
 
           }
 
@@ -109,6 +116,7 @@ module.exports = function(app) {
     con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
       if (result.length <= 0)
         message = "Profile not found!";
+        console.log(result[0].user_id);
       res.render('homeProfile.ejs', {
         data: result,
         message: message,
