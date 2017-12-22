@@ -14,7 +14,6 @@ var urlencodedParser = bodyParser.urlencoded({
 module.exports = function(app) {
 app.get('/friend/profile/:id', function(req, res, next) {
     con.query("SELECT firstname,lastname FROM MyUser WHERE MyUser.user_id=?",req.params.id,function(err, rows, fields) {
-      console.log('hiiiiiiiiiiiiiiiiiiiiiiii');
       for (var i = 0; i < rows.length; i++) {
         console.log(rows[i]);
       }
