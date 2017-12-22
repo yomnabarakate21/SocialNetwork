@@ -68,17 +68,16 @@ else {
  }
 });//end of app.post
 
+
+
+
+app.get('/search/:id', function(req, res, next) {
+  id=req.params.id;
+    mysql.query("SELECT * FROM MyUser WHERE MyUser.user_id=?",req.params.id,function(err,rows, fields) {
+        if (err) throw err;
+        res.render('search.ejs',{data:rows});
+        next();
+        });
+
+});
 }//end of fn
-
-/*
-app.get('/search', function(req, res, next) {
-  res.send("You are in the profile of the user of id" + req.params.id);
-  next();
-
-
-});*/
-/*app.post('/search', urlencodedParser, function(req, res) {
-
-
-
-});*/
