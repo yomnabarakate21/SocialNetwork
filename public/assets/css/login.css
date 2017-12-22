@@ -11,3 +11,7 @@ body{
   background-image: url("green.jpg");
   background-color: linear-gradient(-80deg,white,#b2b2b2 );
   }
+.panel
+  {
+    background: rgba(255,255,255,0.6 );
+  }
