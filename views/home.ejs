@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Home sweet Home</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="text/css" href="/public/assets/css/homeprofile.css" />
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="/public/assets/home.js" type="text/javascript">
     </script>
+
   </head>
 
   <body>
@@ -55,11 +57,19 @@
                           <br>
                           <button type="button" id="post_btn">POST</button>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          <div id="posts-div" class=posts>
                         <h2>POSTS</h2>
-                        <ul>
+                        <ul id="posts">
                           <%if (postsdata.length>0){
                         for(var i=0;i<postsdata.length;i++){%>
                             <li>
+
                               <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>"" alt="profilepicture" height="60" width="60">
                               <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].poster_id %>">
 
@@ -67,22 +77,20 @@
                                   <%=postsdata[i].lastname %>
                               </a>
                               <br>
+                              <span id="post-caption"
                               <%=postsdata[i].caption %>
+                            </span>
                             </li>
                             <%}}
                           else{%>
                               <h4>NO POSTS TO DISPLAY! </h4>
                               <%} %>
                         </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <% } %>
-        </div>
-      </div>
 
+              <% } %>
+</div>
+</div>
+</div>
   </body>
 
   </html>

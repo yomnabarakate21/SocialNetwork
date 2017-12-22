@@ -17,7 +17,18 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "SocialNetwork"
+});
+
+
 module.exports = function(app) {
+
 
 
 
@@ -41,6 +52,7 @@ module.exports = function(app) {
 
   app.post('/sendfriendreq', urlencodedParser, function(req, res) {
     
+
 
     friendship = new Friendship({
       user_id1: req.body.id,

@@ -23,7 +23,11 @@ $(function() {
         if (data.length > 0) {
           var result = "";
           for (i = 0; i < data.length; i++) {
-            result += '<a href="/friend/profile/'+myid.val()+'/'+data[i].user_id +'">'+ data[i].firstname +"  "+ data[i].lastname + '</a> <br />';
+
+            result += '<a href="/friend/profile/'+ data[i].user_id +'">'+
+             '<img  alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/'+data[i].profile_picture+'">'+'<br>'+
+data[i].firstname +"  "+data[i].lastname+ '</a> <br /><br>';
+
               $("#results").html(result);
           }
         }
