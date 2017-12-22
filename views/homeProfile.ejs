@@ -64,7 +64,7 @@
                       <%}%>
                   </ul>
                 </div>
-                <div class=posts>
+                <div class="posts">
                   <h2>Posts</h2>
                   <br>
                   <ul id="posts">
@@ -72,16 +72,20 @@
                 for(var i=0;i<postsdata.length;i++){%>
                       <li>
                           <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-                        <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
-
+                          <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
                           <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img img-circle" >
                           <%=postsdata[i].firstname %>
                             <%=postsdata[i].lastname %>
                         </a>
+
                         <br><br><br>
-                        <span id="post-caption">
+                        <h3 id="post-caption">
                         <%=postsdata[i].caption %>
-</span>
+                      </h3>
+                      <br>
+                      <%if(postsdata[i].image!=null){%>
+                      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image">
+                      <%}%>
                       </li>
                       <br>
                       <%}}
