@@ -7,25 +7,35 @@
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="/public/assets/accept.js" type="text/javascript"></script>
-
+  <link rel="stylesheet" href="../public/assets/css/requests.css"/>
 </head>
 
 <body>
+  <% include partials/nav.ejs %>
+          <div class="reqhead panel-heading">
           <h1>Friend Requests</h1>
-            <ul>
+        </div>
+          <div class="friendc panel panel-info">
+            <div class="panel-body">
+            <ul class="friend panel">
               <%for(var i=0;i<friendsdata.length;i++){%>
                 <li>
                   <a href="/friend/profile/<%=friendsdata[i].user_id %>">
-                    <%=friendsdata[i].firstname %>
-                      <%friendsdata[i].lastname; %>
+                  <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" class="img-circle myimage">
                   </a>
+                  <div class="friendname">
+                  <h1 class="friendname">
+                    <%=friendsdata[i].firstname %>
+                    <%=friendsdata[i].lastname %>
+                  </h1>
+                </div>
                 </li>
-                <button id="accept" name="accept" type="submit" value="<%=friendsdata[i].user_id%>">Accept</button>
-                <button name="ignore" type="submit" value="<%=friendsdata[i].user_id%>" >Ignore</button>
-
+                <button class ="button" id="accept" name="accept" type="submit" value="<%=friendsdata[i].user_id%>">Accept</button>
+                <button class ="button"name="ignore" type="submit" value="<%=friendsdata[i].user_id%>" >Ignore</button>
                   <%}%>
             </ul>
-
+          </div>
+          </div>
     </div>
   </div>
 </body>

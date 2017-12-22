@@ -18,6 +18,7 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 var info;
+var myinfo;
 function setValue(value) {
   info = value;
   for (var i = 0; i < info.length; i++) {
@@ -32,7 +33,6 @@ module.exports = function(app) {
     console.log(req.params.id);
     con.query("SELECT * FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
       function(err, rows, fields) {
-       setValue(rows);
       });
       console.log("In get 2");
        res.render('requests.ejs', {
@@ -46,11 +46,16 @@ module.exports = function(app) {
     //var info;
     console.log("In get");
     console.log(req.params.id);
+
     con.query("SELECT * FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
       function(err, rows, fields) {
-       setValue(rows);
-       res.render('requests.ejs', {
-        friendsdata: info,
+        setValue(rows);
+        con.query("SELECT * FROM MyUser WHERE user_id=?",req.params.id, function(error,rows2,fields){
+          res.render('requests.ejs', {
+           friendsdata: info,
+           data:rows2,
+        });
+
       });
       });
       console.log("In get 2");

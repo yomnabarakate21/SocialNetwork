@@ -5,6 +5,16 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "SocialNetwork"
+});
+
+
 module.exports = function(app) {
 
   app.post('/request/accept', urlencodedParser, function(req, res) {
@@ -27,7 +37,7 @@ module.exports = function(app) {
               console.log("Ignored");
             });
       });
-      
+
   app.get('/friendreq', function(req, res) {
 
     //TO DO
