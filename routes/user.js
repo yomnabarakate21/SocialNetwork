@@ -39,11 +39,6 @@ function setValue(value) {
 function setPost(post) {
 
   posts_info = post;
-  console.log('new');
-  for (var i = 0; i < posts_info.length; i++) {
-    console.log(posts_info[i].firstname + posts_info[i].caption );
-
-  }
 }
 module.exports = function(app) {
   app.get('/user/home/:id', function(req, res, next) {
@@ -54,7 +49,7 @@ module.exports = function(app) {
         if (err) console.log('error');
         setids(rows, function() {
           if (ids.length > 0) {
-            con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id IN (" + ids.join() + ")) AS t1 ON MyUser.user_id= t1.poster_id ",
+            con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE (Post.poster_id IN (" + ids.join() + ") OR Post.ispublic='1')) AS t1 ON MyUser.user_id= t1.poster_id ",
               function(err, rows2, fields) {
                 if (err) console.log('eror');
                 setPost(rows2);
@@ -70,7 +65,6 @@ module.exports = function(app) {
                 });
               });
           } else {
-            console.log('m3ndeeesh so7ab');
             posts_info=[];
             con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
               if (result.length <= 0)
@@ -85,7 +79,7 @@ module.exports = function(app) {
           }
 
         });
-      
+
       });
 
 
@@ -133,7 +127,6 @@ module.exports = function(app) {
     con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
       if (result.length <= 0)
         message = "Profile not found!";
-      console.log(result[0].profile_picture);
       res.render('home2.ejs', {
         data: result,
         message: message
@@ -142,12 +135,6 @@ module.exports = function(app) {
 
   });
 
-
-  app.post('/user', urlencodedParser, function(req, res) {
-
-
-
-  });
 
 
 }

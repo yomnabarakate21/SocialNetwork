@@ -30,7 +30,7 @@ module.exports = function(app) {
         if (rows != "") {
 
 
-          res.render('temp.ejs', {
+          res.render('edituser.ejs', {
             data: rows
           });
         }
@@ -38,10 +38,6 @@ module.exports = function(app) {
 
       });
     }); //end of get function
-
-
-
-
 
     app.post('/editprofile/:id', function(req, res, next) {
          var id = req.params.id;
