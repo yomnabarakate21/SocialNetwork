@@ -9,7 +9,6 @@ var con = mysql.createConnection({
 
 var User = require('../models/user');
 var bodyParser = require('body-parser');
-//user= new User();
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
@@ -24,8 +23,6 @@ module.exports = function(app) {
 
   app.post('/login', urlencodedParser, function(req, res, next) {
     var encrypt_pass = md5(req.body.password);
-    console.log('signing up  ' + req.body.name + ' ' + req.body.password);
-
     con.query("SELECT user_id FROM MyUser WHERE (MyUser.email =? AND MyUser.password =? ) ", [req.body.name, encrypt_pass],
       function(err, rows, fields) {
         if (rows.length > 0) {
@@ -37,9 +34,7 @@ module.exports = function(app) {
             id: rows[0].user_id
           });
         } else {
-          //  alert('wrong username or pass');
           res.send(500, 'showAlert');
-          console.log('fashlaaa');
 
         }
 

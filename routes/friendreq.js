@@ -22,32 +22,25 @@ module.exports = function(app) {
 
 
     app.post('/request/accept', urlencodedParser, function(req, res) {
-      //TO DO
 
-      console.log("accepting request");
-      console.log(req.body.uid);
-      console.log(req.body.rid);
+
+
       con.query("UPDATE Friendship SET status='1' WHERE user_id1=? AND user_id2=?", [req.body.uid, req.body.rid],
           function(err, rows, fields) {
-            console.log("Accepted");
             res.send(rows);
           });
     });
     app.post('/request/ignore', urlencodedParser, function(req, res) {
       //TO DO
-      console.log("deleting request");
-      console.log(req.body.uid);
-      console.log(req.body.rid);
+
       con.query("DELETE FROM Friendship  WHERE user_id1=? AND user_id2=? AND status='0'", [req.body.uid, req.body.rid],
           function(err, rows, fields) {
-            console.log("Deleted");
             res.send(rows);
           });
     });
 
   app.post('/sendfriendreq', urlencodedParser, function(req, res) {
-    //TO DO
-    console.log('Sending friend request from '+req.body.id+'to ' +req.body.idf);
+    
 
     friendship = new Friendship({
       user_id1: req.body.id,

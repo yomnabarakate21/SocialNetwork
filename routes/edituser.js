@@ -70,7 +70,7 @@ module.exports = function(app) {
               }
               else {
                 message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
-                console.log('this format isnt allowed');
+
                 res.render('temp.ejs', {
                   message: message
                 });
@@ -79,7 +79,7 @@ module.exports = function(app) {
             }
 
             if (!checkNullString(req.body.elast_name)) {
-              console.log('upadating lastname: ' + req.body.elast_name);
+
               con.query("UPDATE MyUser SET lastname=? WHERE MyUser.user_id=?", [req.body.elast_name, id]);
 
               sleep(1000);
@@ -87,7 +87,7 @@ module.exports = function(app) {
 
 
             if (!checkNullString(req.body.efirst_name)) {
-                console.log('upadating firstname: ' + req.body.efirst_name);
+
               con.query("UPDATE MyUser SET firstname=? WHERE MyUser.user_id=?", [req.body.efirst_name, id],function(err, result) {
 
               });
@@ -95,13 +95,13 @@ module.exports = function(app) {
             }
 
             if (!checkNullString(mob)) {
-              console.log('upadating mob: ' + req.body.emob_no);
+
               con.query("UPDATE MyUser SET phone_number1=? WHERE MyUser.user_id=?", [req.body.emob_no, id]);
               sleep(1000);
             }
 
             if (!checkNullString(req.body.ehome_town)) {
-              console.log('uadating: ' + req.body.hometown);
+
               con.query("UPDATE MyUser SET hometown=? WHERE MyUser.user_id=?", [req.body.ehome_town, id]);
 
               sleep(1000);
@@ -111,7 +111,7 @@ module.exports = function(app) {
               var pass = md5(req.body.epassword_1);
 
               if (pass == x) {
-                console.log('upadating password: ' + req.body.epassword_1);
+
 
                 con.query("UPDATE MyUser SET password=? WHERE MyUser.user_id=?", [pass, id]);
               } else {

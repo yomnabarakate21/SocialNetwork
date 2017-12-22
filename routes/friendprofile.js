@@ -41,7 +41,6 @@ else if(dataa[0].status==1)  {
 
 else if(dataa[0].status==0 && dataa[0].user_id1==req.params.id )
 {
-  console.log(dataa[0].status);
 
   message="you already send friend request"
 }

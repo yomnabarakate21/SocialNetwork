@@ -28,24 +28,23 @@ module.exports = function(app) {
     if (checkNullString(firstname) && checkNullString(lastname) && checkNullString(email) && checkNullString(hometown) && checkNullString(caption))
 
     {
-      console.log('missing data');
+
       data=[];
-      console.log(data.length);
       res.send(data);
     }
     else {
-      console.log('geet hena!');
+
       var myQuery = "select * from MyUser where "
       if (checkNullString(firstname) === false)
         myQuery += " firstname = " + mysql.escape(firstname);
       if (checkNullString(lastname) === false)
-        myQuery += " AND lastname = " + mysql.escape(lastname);
+        myQuery += " lastname = " + mysql.escape(lastname);
       if (checkNullString(email) === false)
-        myQuery += " AND email = " + mysql.escape(email);
+        myQuery += " email = " + mysql.escape(email);
       if (checkNullString(hometown) === false)
-        myQuery += " AND hometown = " + mysql.escape(hometown);
+        myQuery += "  hometown = " + mysql.escape(hometown);
       if (checkNullString(caption) === false)
-        myQuery += " AND email like " + mysql.escape('%' + caption + '%');
+        myQuery += "  email like " + mysql.escape('%' + caption + '%');
 
       user.query(myQuery, function(err, rows, fields) {
         if (err) {
@@ -54,9 +53,9 @@ module.exports = function(app) {
 
           for (var i = 0; i < rows.length; i++) {
             data.push(rows[i]);
-            console.log(data[i].firstname);
+
           }
-          console.log(data.length);
+
           res.send(data);
 
         }

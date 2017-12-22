@@ -18,7 +18,6 @@ var user= require('./routes/user');
 var getreq= require('./routes/getreq');
 var friend= require('./routes/friendprofile');
 var friendreq=require('./routes/friendreq');
-var signup= require('./routes/signup');
 var login= require('./routes/login');
 var edituser= require('./routes/edituser');
 
@@ -45,10 +44,8 @@ user(app);
 post(app);
 friendreq(app);
 friend(app);
-signup(app);
 login(app);
 edituser(app);
-
 searchresults(app);
 getreq(app);
 

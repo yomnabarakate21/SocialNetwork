@@ -46,12 +46,12 @@ module.exports = function(app) {
     //get all the friends
     con.query(" SELECT user_id FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendship.user_id1 =? OR Friendship.user_id2 =? )AND Friendship.status='0'))as t1  ON ((MyUser.user_id= t1.user_id1 OR MyUser.user_id= t1.user_id2) AND MyUser.user_id<>?) ", [req.params.id, req.params.id, req.params.id],
       function(err, rows, fields) {
-        if (err) console.log('error');
+        if (err) throw err;
         setids(rows, function() {
           if (ids.length > 0) {
             con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE (Post.poster_id IN (" + ids.join() + ") OR Post.ispublic='1')) AS t1 ON MyUser.user_id= t1.poster_id ",
               function(err, rows2, fields) {
-                if (err) console.log('eror');
+                if (err) throw err;
                 setPost(rows2);
                 var message = '';
                 con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
@@ -67,9 +67,7 @@ module.exports = function(app) {
           } else {
             posts_info=[];
             con.query("SELECT * FROM Post JOIN MyUser ON MyUser.user_id= Post.poster_id WHERE Post.ispublic='1'",function(err,presult){
-              for(var i=0;i<presult.length;i++){
-                console.log(presult[i].firstname + " " +presult[i].poster_id);
-              }
+              
               con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
 
                 if (result.length <= 0)
