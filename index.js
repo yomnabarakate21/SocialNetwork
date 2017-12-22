@@ -16,6 +16,8 @@ var index = require ('./routes/index');
 var post= require('./routes/post');
 var user= require('./routes/user');
 var friendreq= require('./routes/friendreq');
+var getreq= require('./routes/getreq');
+
 var friend= require('./routes/friend');
 var signup= require('./routes/signup');
 var login= require('./routes/login');
@@ -47,7 +49,9 @@ friend(app);
 signup(app);
 login(app);
 edituser(app);
+
 searchresults(app);
+getreq(app);
 
 
 

@@ -16,10 +16,35 @@ module.exports = function(app){
       var fname= post.first_name;
       var lname= post.last_name;
       var mob= post.mob_no;
+      var gender=post.gender;
+      var hometown = post.home_town;
+      var email = post.email;
+      var status = post.marital_status;
+      var q = "SELECT * FROM MyUser WHERE email = ?";
+      var query = db.query(q,email,function(err,result){
+        if(result.length>0)
+        {
+          return res.status(200).send('Email taken');
+        }
+      });
+	  if (!req.files.uploaded_image)
+    {
+      console.log("hena");
+				//return res.status(400).send('No files were uploaded.');
 
-	  if (!req.files)
-				return res.status(400).send('No files were uploaded.');
+          //  return res.status(500).send(err);
+          if(gender=="male")
+          var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','m_default.jpg','"+gender+"','"+email+"','"+hometown+"','"+status+"')";
+          else
+          var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','f_default.jpg','"+gender+"','"+email+"','"+hometown+"','"+status+"')";
 
+          var query = db.query(sql, function(err, result) {
+            console.log('am here! and near');
+             res.redirect('/user/home/'+result.insertId);
+          });
+
+      }
+    else{
 		var file = req.files.uploaded_image;
 		var img_name=file.name;
 
@@ -30,7 +55,7 @@ module.exports = function(app){
 	              if (err)
 
 	                return res.status(500).send(err);
-      					var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','" + img_name + "')";
+                  var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','"+img_name+"','"+gender+"','"+email+"','"+hometown+"','"+status+"')";
 
     						var query = db.query(sql, function(err, result) {
                   console.log('am here! and near');
@@ -46,6 +71,7 @@ console.log('this format isnt allowed');
 
             //res.render('index.ejs',{message: message});
           }
+        }
    });
 
 
