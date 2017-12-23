@@ -71,7 +71,7 @@ con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=?
     setPost(rows2);
 
 //get all public posts
-con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id= ? AND Post.ispublic='1' ) AS t1 ON MyUser.user_id = t1.poster_id ",req.params.idf,
+con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id= ? AND Post.ispublic='1' ) AS t1 ON MyUser.user_id = t1.poster_id ORDER BY t1.posted_time DESC",req.params.idf,
 function(err, publicposts, fields){
 
 
