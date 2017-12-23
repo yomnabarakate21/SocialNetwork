@@ -31,9 +31,8 @@
     "mongoose": "^4.13.7",
     "mysql": "^2.15.0",
     "mysql-model": "0.0.2",
-
+    "node-emoji": "^1.8.1",
     "nodemon": "^1.14.1",
-
     "then-busboy": "^2.1.4",
     "thread-sleep": "^2.0.0",
     "underscore": "^1.8.3"

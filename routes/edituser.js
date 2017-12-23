@@ -67,7 +67,7 @@ module.exports = function(app) {
                     throw err;
                     else {
                       file.mv('public/images/post_images/' + file.name, function(err) {
-                      con.query("INSERT INTO `Post` (`caption`, `image`, `ispublic`, `poster_id`) VALUES ('Changed His Profile Picture!',?, '1', ?);",[img_name,req.params.id],function(err,result)
+                      con.query("INSERT INTO `Post` (`caption`, `image`, `ispublic`, `poster_id`) VALUES ('Changed Their Profile Picture!',?, '1', ?);",[img_name,req.params.id],function(err,result)
                       {
                         if(err)
                         throw err;

@@ -1,5 +1,6 @@
 var db = require('../models/mysql-connection.js');
 var md5 = require('md5');
+var checkNullString = require('check-null-string');
 module.exports = function(app) {
   message = '';
   app.post('/', function(req, res, next) {
@@ -14,6 +15,10 @@ module.exports = function(app) {
     var email = post.email;
     var status = post.marital_status;
     var bdate=post.bdate;
+    if(checkNullString(name))
+    {
+      name =fname+" "+lname;
+    }
     var pass=md5(non_pass);
     var q = "SELECT * FROM MyUser WHERE email = ?";
     var query = db.query(q, email, function(err, result) {
