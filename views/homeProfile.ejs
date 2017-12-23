@@ -1,4 +1,4 @@
-<<html lang="en">
+git <<html lang="en">
 
   <head>
     <meta charset="UTF-8">
@@ -41,6 +41,36 @@
                               <%=data[0].phone_number1%>
                             </td>
                           </tr>
+                          <tr>
+                            <td>Gender:</td>
+                            <td>
+                              <%=data[0].gender%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Email:</td>
+                            <td>
+                              <%=data[0].email%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>HomeTown:</td>
+                            <td>
+                              <%=data[0].hometown%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Mobile:</td>
+                            <td>
+                              <%=data[0].email%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Martial Status:</td>
+                            <td>
+                              <%=data[0].martial_status%>
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -54,38 +84,38 @@
                     <% for(var i=0;i<friendsdata.length;i++){%>
                       <li>
 
-                          <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-                        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
+                        <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" " alt="profilepicture " height="60 " width="60 ">
+                        <a href="/friend/profile/<%=data[0].user_id%>/
+                        <%=friendsdata[i].user_id %>">
 
                           <%=friendsdata[i].firstname %>
                             <%=friendsdata[i].lastname %>
-                        </a>
+                              </a>
                       </li>
                       <%}%>
                   </ul>
                 </div>
-                <div class="posts">
+                <div class=posts>
                   <h2>Posts</h2>
                   <br>
                   <ul id="posts">
                     <%if (postsdata.length>0){
                 for(var i=0;i<postsdata.length;i++){%>
                       <li>
-                          <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-                          <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
-                          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img img-circle" >
+                        <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" " alt="profilepicture " height="60 " width="60 ">
+                        <a href="/friend/profile/<%=data[0].user_id%>/
+                        <%=postsdata[i].user_id %>">
+
+
+
+                          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img">
                           <%=postsdata[i].firstname %>
                             <%=postsdata[i].lastname %>
-                        </a>
-
-                        <br><br><br>
-                        <h3 id="post-caption">
+                              </a>
+                              <br><br><br>
+                              <span id="post-caption">
                         <%=postsdata[i].caption %>
-                      </h3>
-                      <br>
-                      <%if(postsdata[i].image!=null){%>
-                      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image">
-                      <%}%>
+</span>
                       </li>
                       <br>
                       <%}}
@@ -93,7 +123,7 @@
                         <h4>NO POSTS TO DISPLAY! </h4>
                         <%} %>
                   </ul>
-                    </div>
+                </div>
         </div>
       </div>
   </body>
