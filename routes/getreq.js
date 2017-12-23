@@ -42,13 +42,19 @@ module.exports = function(app) {
 
   app.get('/getreq/:id', function(req, res) {
     //var info;
+//get all
+var no_of_req;
+con.query("SELECT COUNT (*) AS fcount FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
+  function(err, crows, fields) {
+    no_of_req=crows[0].fcount;
+  });
 
     var id=req.params.id;
   var data=[{user_id:id}];
     con.query("SELECT * FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
       function(err, rows, fields) {
        setValue(rows);
-          res.render('requests.ejs', {  friendsdata: info ,data:data });
+          res.render('requests.ejs', {  friendsdata: info ,data:data, no_of_req:no_of_req });
 
       });
 

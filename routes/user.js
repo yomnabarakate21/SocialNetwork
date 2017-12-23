@@ -17,7 +17,6 @@ var urlencodedParser = bodyParser.urlencoded({
 var info;
 var posts_info;
 var ids = [];
-
 function setids(friends_ids, callback) {
   ids=[];
   for (var i = 0; i < friends_ids.length; i++) {
@@ -43,6 +42,13 @@ function setPost(post) {
 module.exports = function(app) {
   app.get('/user/home/:id', function(req, res, next) {
     var id = req.params.id;
+    var no_of_req;
+    //get alll req
+    con.query("SELECT COUNT (*) AS fcount FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
+      function(err, crows, fields) {
+        no_of_req=crows[0].fcount;
+        console.log("this is the no of req "+ crows[0].fcount);
+      });
     //get all the friends
     con.query(" SELECT user_id FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendship.user_id1 =? OR Friendship.user_id2 =? )AND Friendship.status='1'))as t1  ON ((MyUser.user_id= t1.user_id1 OR MyUser.user_id= t1.user_id2) AND MyUser.user_id<>?) ", [req.params.id, req.params.id, req.params.id],
       function(err, rows, fields) {
@@ -61,11 +67,20 @@ module.exports = function(app) {
                     data: result,
                     message: message,
                     postsdata: posts_info,
+                    no_of_req:no_of_req,
                   });
                 });
               });
           } else {
             posts_info=[];
+            no_of_req=0;
+            //get alll req
+            con.query("SELECT COUNT (*) AS fcount FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
+              function(err, crows, fields) {
+                no_of_req=crows[0].fcount;
+                console.log("this is the no of req "+ crows[0].fcount);
+              });
+
             con.query("SELECT * FROM Post JOIN MyUser ON MyUser.user_id= Post.poster_id WHERE Post.ispublic='1' ORDER BY Post.posted_time DESC",function(err,presult){
 
               con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
@@ -76,6 +91,7 @@ module.exports = function(app) {
                   data: result,
                   message: message,
                   postsdata: presult,
+                  no_of_req:no_of_req,
                 });
               });
             });
@@ -97,6 +113,13 @@ module.exports = function(app) {
 
   app.get('/user/homeProfile/:id', function(req, res, next) {
     var id = req.params.id;
+    var no_of_req;
+    //get all friendreq
+    con.query("SELECT COUNT (*) AS fcount FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
+      function(err, crows, fields) {
+        no_of_req=crows[0].fcount;
+        console.log("this is the no of req "+ crows[0].fcount);
+      });
     //get all the friends
     con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendship.user_id1 =? OR Friendship.user_id2 =? )AND Friendship.status='1'))as t1  ON ((MyUser.user_id= t1.user_id1 OR MyUser.user_id= t1.user_id2) AND MyUser.user_id<>?) ", [req.params.id, req.params.id, req.params.id],
       function(err, rows, fields) {
@@ -120,6 +143,7 @@ module.exports = function(app) {
         message: message,
         friendsdata: info,
         postsdata: posts_info,
+        no_of_req:no_of_req,
       });
     });
 

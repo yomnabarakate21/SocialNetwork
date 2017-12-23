@@ -27,6 +27,11 @@ app.get('/friend/profile/:id/:idf', function(req, res, next) {
   var id=req.params.id;
   var data=[{user_id:id}];
   var idf=req.params.idf;
+  var no_of_req;
+  con.query("SELECT COUNT (*) AS fcount FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
+    function(err, crows, fields) {
+      no_of_req=crows[0].fcount;
+    });
 
     con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?",req.params.idf,function(err, result, fields) {
       if (result.length <= 0)
@@ -84,7 +89,7 @@ res.writeHead(301,{Location: '/user/homeProfile/'+req.params.id});
 res.end();
 }
 else
-    res.render('friend.ejs', {fdata:result ,status:message, data:data , idf:idf, message1: message1, friendsdata: info , postsdata: posts_info,publicposts:publicposts});
+    res.render('friend.ejs', {fdata:result ,no_of_req:no_of_req, status:message, data:data , idf:idf, message1: message1, friendsdata: info , postsdata: posts_info,publicposts:publicposts});
 
 
       });
