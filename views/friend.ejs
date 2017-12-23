@@ -12,8 +12,85 @@
   <h1><%=fdata[0].firstname%> <%=fdata[0].lastname%></h1>
 
   <input type=button id="status" value="<%=status%>" > </input>
+    <input type=button id="ignore" value="ignore" > </input>
   <input id="id" value="<%=data[0].user_id%>"  hidden>  </input>
   <input id="idf" value="<%=idf%>" hidden></input>
+
+<div id="thefriend" >
+
+
+<div class="panel-body">
+  <div class="row">
+    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=fdata[0].profile_picture%>" class="img-circle img-responsive"> </div>
+    <div class=" col-md-9 col-lg-9 ">
+      <table class="table table-user-information">
+        <tbody>
+          <tr>
+            <td>User Name:</td>
+            <td>
+              <%=fdata[0].nickname%>
+            </td>
+          </tr>
+          <tr>
+            <td>Mobile:</td>
+            <td>
+              <%=fdata[0].phone_number1%>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class=friends>
+  <h2>Friends</h2>
+  <ul>
+    <% for(var i=0;i<friendsdata.length;i++){%>
+      <li>
+
+          <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
+        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
+
+          <%=friendsdata[i].firstname %>
+            <%=friendsdata[i].lastname %>
+        </a>
+      </li>
+      <%}%>
+  </ul>
+</div>
+<div class="posts">
+  <h2>Posts</h2>
+  <br>
+  <ul id="posts">
+    <%if (postsdata.length>0){
+for(var i=0;i<postsdata.length;i++){%>
+      <li>
+          <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
+          <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
+          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img img-circle" >
+          <%=postsdata[i].firstname %>
+            <%=postsdata[i].lastname %>
+        </a>
+
+        <br><br><br>
+        <h3 id="post-caption">
+        <%=postsdata[i].caption %>
+      </h3>
+      <br>
+      <%if(postsdata[i].image!=null){%>
+      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image">
+      <%}%>
+      </li>
+      <br>
+      <%}}
+  else{%>
+        <h4>NO POSTS TO DISPLAY! </h4>
+        <%} %>
+  </ul>
+    </div>
+
+</div>
 
 </body>
 

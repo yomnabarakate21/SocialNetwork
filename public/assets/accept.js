@@ -28,8 +28,8 @@ $(function() {
     var id = url[url.length-1];
 
   //  console.log(id);
-    var todo={ uid:user_id};
-  //  var todo={uid:user_id, rid:id};
+  //  var todo={ uid:user_id};
+    var todo={uid:user_id, rid:id};
     console.log('I was pressed');
     $.ajax({
       type: 'POST',
