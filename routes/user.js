@@ -49,7 +49,7 @@ module.exports = function(app) {
         if (err) throw err;
         setids(rows, function() {
           if (ids.length > 0) {
-            con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE (Post.poster_id IN (" + ids.join() + ") OR Post.ispublic='1')) AS t1 ON MyUser.user_id= t1.poster_id ",
+            con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE (Post.poster_id IN (" + ids.join() + ") OR Post.ispublic='1') ORDER BY Post.posted_time DESC) AS t1 ON MyUser.user_id= t1.poster_id ORDER BY t1.posted_time DESC",
               function(err, rows2, fields) {
                 if (err) throw err;
                 setPost(rows2);
@@ -66,7 +66,7 @@ module.exports = function(app) {
               });
           } else {
             posts_info=[];
-            con.query("SELECT * FROM Post JOIN MyUser ON MyUser.user_id= Post.poster_id WHERE Post.ispublic='1'",function(err,presult){
+            con.query("SELECT * FROM Post JOIN MyUser ON MyUser.user_id= Post.poster_id WHERE Post.ispublic='1' ORDER BY Post.posted_time DESC",function(err,presult){
 
               con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
 
@@ -104,7 +104,7 @@ module.exports = function(app) {
 
       });
     //get all user posts
-    con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? ) AS t1 ON MyUser.user_id = t1.poster_id ", id,
+    con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? ORDER BY Post.posted_time DESC ) AS t1 ON MyUser.user_id = t1.poster_id ORDER BY t1.posted_time DESC ", id,
       function(err, rows2, fields) {
         setPost(rows2);
       });

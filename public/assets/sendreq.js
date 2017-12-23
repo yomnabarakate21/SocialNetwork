@@ -44,7 +44,6 @@ document.getElementById("ignore").style.visibility="hidden";
 }
 else {
   $("#ignore").click(function() {
-    alert('henaaaa');
     var id =  document.getElementById("id").value;
     var idf =  document.getElementById("idf").value;
 
