@@ -1,14 +1,12 @@
 $(function(){
   $("#submit").click(function(event ){
     event.preventDefault();
-    alert("aaa");
 var name =$("#name");
 var password =$("#password");
 var user={
   name:name.val(),
   password:password.val()
 };
-console.log('I was pressed');
 
   $.ajax ({
     type: 'POST',
