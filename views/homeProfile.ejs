@@ -25,7 +25,7 @@
               </div>
               <div class="panel-body">
                 <div class="row">
-                  <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=data[0].profile_picture%>" class="img-circle img-responsive"> </div>
+                  <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=data[0].profile_picture>" class="img-circle img-responsive"  "height="100" width="100"> </div>
                   <div class=" col-md-9 col-lg-9 ">
                     <table class="table table-user-information">
                       <tbody>
@@ -76,7 +76,7 @@
                 <div class=friends>
 
                   <% if (friendsdata.length<1){%>
-                    <h3 style="margin-top:30px; margin-left:40px;"> You Have NO Friends :( </h3>
+                    <h3 style="margin-top:30px; margin-left:40px;"> You don't have any Friends :( </h3>
                 <% }
                 else { %>
                   <ul>

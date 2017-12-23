@@ -24,7 +24,7 @@ $(function() {
           var result = "";
           for (i = 0; i < data.length; i++) {
 
-            result += '<a href="/friend/profile/' + data[i].user_id + '">' +
+            result += '<a href="/friend/profile/'+ myid.val() +'/'+ data[i].user_id + '">' +
               '<img  alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/' + data[i].profile_picture +'"   "height="100" width="100"" >' + '<br>' +
               data[i].firstname + "  " + data[i].lastname + '</a> <br /><br>';
 

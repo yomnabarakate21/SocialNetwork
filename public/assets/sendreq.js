@@ -2,10 +2,12 @@ $(document).ready(function(){
   if(document.getElementById("status").value!="friends")
 {
 $("#thefriend").hide();
+$("#Nofriend").show();
 }
 else
 {
-  $("#Nofriend").show();
+  $("#thefriend").show();
+  $("#Nofriend").hide();
 }
 
 
