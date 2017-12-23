@@ -7,7 +7,6 @@ $(function() {
       uid: user_id,
       rid: id
     };
-    console.log('I was pressed');
     $.ajax({
       type: 'POST',
       url: '/request/accept',
