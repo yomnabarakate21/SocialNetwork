@@ -1,76 +1,76 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>My profile</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/public/assets/css/homeprofile.css" />
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>My profile</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/assets/css/homeprofile.css" />
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
 
-  </head>
+</head>
 
-  <body>
-    <% include partials/nav.ejs %>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
-          <% if (message.length > 0) { %>
-            <div class="alert alert-danger col-sm-12">
-              <%= message %>
-            </div>
-            <% } else {%>
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><%=data[0].firstname%>, <%=data[0].lastname%></h3>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=data[0].profile_picture%>" class="img-circle img-responsive"> </div>
-                    <div class=" col-md-9 col-lg-9 ">
-                      <table class="table table-user-information">
-                        <tbody>
-                          <tr>
-                            <td>User Name:</td>
-                            <td>
-                              <%=data[0].nickname%>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Home Town:</td>
-                            <td>
-                              <%=data[0].hometown%>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Matrital Status</td>
-                            <td>
-                              <%=data[0].marital_status%>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Email</td>
-                            <td>
-                              <%=data[0].email%>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Birthdate</td>
-                            <td>
-                              <%=data[0].birthdate%>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Mobile:</td>
-                            <td>
-                              <%=data[0].phone_number1%>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+<body>
+  <% include partials/nav.ejs %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
+        <% if (message.length > 0) { %>
+          <div class="alert alert-danger col-sm-12">
+            <%= message %>
+          </div>
+          <% } else {%>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%=data[0].firstname%>, <%=data[0].lastname%></h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=data[0].profile_picture%>" class="img-circle img-responsive"> </div>
+                  <div class=" col-md-9 col-lg-9 ">
+                    <table class="table table-user-information">
+                      <tbody>
+                        <tr>
+                          <td>User Name:</td>
+                          <td>
+                            <%=data[0].nickname%>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Home Town:</td>
+                          <td>
+                            <%=data[0].hometown%>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Matrital Status</td>
+                          <td>
+                            <%=data[0].marital_status%>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td>
+                            <%=data[0].email%>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Birthdate</td>
+                          <td>
+                            <%=data[0].birthdate%>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Mobile:</td>
+                          <td>
+                            <%=data[0].phone_number1%>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
+            </div>
               <% } %>
               <h2>Friends</h2>
                 <div class=friends>
@@ -115,18 +115,18 @@
                       </h4>
                       <br>
                       <%if(postsdata[i].image!=null){%>
-                      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image" width="90" height="100">
-                      <%}%>
-                      </li>
-                      <br>
-                      <%}}
+                        <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image" width="90" height="100">
+                        <%}%>
+                    </li>
+                    <br>
+                    <%}}
                   else{%>
-                        <h4>NO POSTS TO DISPLAY! </h4>
-                        <%} %>
-                  </ul>
-                    </div>
-        </div>
+                      <h4>NO POSTS TO DISPLAY! </h4>
+                      <%} %>
+                </ul>
+              </div>
       </div>
-  </body>
+    </div>
+</body>
 
-  </html>
+</html>

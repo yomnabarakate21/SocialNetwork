@@ -27,9 +27,7 @@ module.exports = function(app) {
       }
     });
     if (!req.files.uploaded_image) {
-      //return res.status(400).send('No files were uploaded.');
-
-      //  return res.status(500).send(err);
+      
       if (gender == "male")
         var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`,`birthdate`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','m_default.jpg','" + gender + "','" + email + "','" + hometown + "','" + status + "','" + bdate + "')";
       else
