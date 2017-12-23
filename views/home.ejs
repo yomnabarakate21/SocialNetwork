@@ -73,7 +73,7 @@
                           <%if (postsdata.length>0){
                         for(var i=0;i<postsdata.length;i++){%>
                             <li>
-                              <a id="post-a" href="/friend/profile/<%=postsdata[i].poster_id %>">
+                              <a id="post-a" href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].poster_id %>">
                                 <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img" >
                                 <%=postsdata[i].firstname %>
                                   <%=postsdata[i].lastname %>

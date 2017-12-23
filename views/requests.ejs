@@ -20,7 +20,7 @@
             <ul class="friend panel">
               <%for(var i=0;i<friendsdata.length;i++){%>
                 <li>
-                  <a href="/friend/profile/<%=friendsdata[i].user_id %>">
+                  <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
                   <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" class="img-circle myimage">
                   </a>
                   <div class="friendname">
