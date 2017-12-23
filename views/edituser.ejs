@@ -2,9 +2,15 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Editt Profile</title>
+  <title>Edit Profile</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <style>
+  .abtme{
+    padding-top: 10px;
+    padding-bottom: 60px;
+  }
+  </style>
 </head>
 
 <body>
@@ -13,13 +19,13 @@
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
         <div class="panel-heading">
-          <div class="panel-title">Edit user</div>
+          <div class="panel-title">Edit Info</div>
         </div>
         <div class="panel-body">
           <form class="form-horizontal" role="form" method="post" action="/editprofile/<%=data[0].user_id%>" enctype="multipart/form-data">
-            <div class="alert alert-success col-sm-12">
+            <!-- <div class="alert alert-success col-sm-12">
 
-            </div>
+            </div> -->
 
             <div id="signupalert" style="display:none" class="alert alert-danger">
               <p>Error:</p>
@@ -28,26 +34,32 @@
             <div class="form-group">
               <label for="first_name" class="col-md-3 control-label"> First Name</label>
               <div class="col-md-9">
-                  <label  class="col-md-3 control-label"> <%=data[0].user_id %></label>
-                <input type="text" class="form-control" name="efirst_name" placeholder="First Name" >
+                  <!-- <label  class="col-md-3 control-label"> <%=data[0].user_id %></label> -->
+                <input type="text" class="form-control" name="efirst_name" placeholder="<%=data[0].firstname %>" >
               </div>
             </div>
             <div class="form-group">
               <label for="last_name" class="col-md-3 control-label">Last Name</label>
               <div class="col-md-9">
-                <input type="text" class="form-control" name="elast_name" placeholder="Last Name" >
+                <input type="text" class="form-control" name="elast_name" placeholder="<%=data[0].lastname %>" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ebdate" class="col-md-3 control-label">Birthdate</label>
+              <div class="col-md-9">
+                <input type="date" class="form-control" name="ebdate">
               </div>
             </div>
             <div class="form-group">
               <label for="home_town" class="col-md-3 control-label">Home Town</label>
               <div class="col-md-9">
-                <input type="text" class="form-control" name="ehome_town" placeholder="Home Town">
+                <input type="text" class="form-control" name="ehome_town" placeholder="<%=data[0].home_town %>">
               </div>
             </div>
             <div class="form-group">
               <label for="mob_no" class="col-md-3 control-label">Mobile Number</label>
               <div class="col-md-9">
-                <input type="number" class="form-control" name="emob_no" placeholder="Mobile Number">
+                <input type="number" class="form-control" name="emob_no" placeholder="<%=data[0].mob_no %>">
               </div>
             </div>
 
@@ -70,7 +82,7 @@
               <div class="form-group">
                 <label for="user_name" class="col-md-3 control-label">User Name</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" name="euser_name" placeholder="User Name" >
+                  <input type="text" class="form-control" name="euser_name" placeholder="<%=data[0].nickname %>" >
                 </div>
               </div>
 
@@ -79,11 +91,17 @@
                 <div class="col-md-9">
                   <input type="password" class="form-control" name="epassword" placeholder="Password" >
                 </div>
-              </div
+              </div>
               <div class="form-group">
                 <label for="password" class="col-md-3 control-label">New password</label>
                 <div class="col-md-9">
                   <input type="password" class="form-control" name="epassword_1" placeholder="Password" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="aboutme" class="col-md-3 control-label">About Me</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control abtme" name="aboutme" placeholder="About Me">
                 </div>
               </div>
               <div class="form-group">

@@ -49,6 +49,8 @@ module.exports = function(app) {
           var mob = post.emob_no;
           var hometown = post.ehome_town;
           var status = post.emarital_status;
+          var bdate = post.ebdate;
+          var aboutme=post.aboutme;
           if (req.files.euploaded_image) {
             var file = req.files.euploaded_image;
             var img_name = file.name;
@@ -93,6 +95,19 @@ module.exports = function(app) {
               });
               sleep(1000);
             }
+            if (req.body.ebdate) {
+
+              con.query("UPDATE MyUser SET birthdate=? WHERE MyUser.user_id=?", [req.body.ebdate, id],function(err, result) {
+
+              });
+              sleep(1000);
+            }
+            if (!checkNullString(req.body.aboutme)) {
+
+              con.query("UPDATE MyUser SET about_me=? WHERE MyUser.user_id=?", [req.body.aboutme, id]);
+
+              sleep(1000);
+            }
 
             if (!checkNullString(mob)) {
 
@@ -121,7 +136,8 @@ module.exports = function(app) {
               sleep(1000);
             }
 
-          res.render('edituser.ejs',{data:id});
+          //res.render('edituser.ejs',{data:id});
+          res.redirect('/editprofile/'+id);
 
           });
         }

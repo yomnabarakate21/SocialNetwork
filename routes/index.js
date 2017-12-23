@@ -13,6 +13,7 @@ module.exports = function(app) {
     var hometown = post.home_town;
     var email = post.email;
     var status = post.marital_status;
+    var bdate=post.bdate;
     var pass=md5(non_pass);
     var q = "SELECT * FROM MyUser WHERE email = ?";
     var query = db.query(q, email, function(err, result) {
@@ -25,9 +26,9 @@ module.exports = function(app) {
 
       //  return res.status(500).send(err);
       if (gender == "male")
-        var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','m_default.jpg','" + gender + "','" + email + "','" + hometown + "','" + status + "')";
+        var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`,`birthdate`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','m_default.jpg','" + gender + "','" + email + "','" + hometown + "','" + status + "','" + bdate + "')";
       else
-        var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','f_default.jpg','" + gender + "','" + email + "','" + hometown + "','" + status + "')";
+        var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`,`birthdate`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','f_default.jpg','" + gender + "','" + email + "','" + hometown + "','" + status + "','" + bdate + "')";
 
       var query = db.query(sql, function(err, result) {
         console.log('am here! and near');
@@ -45,7 +46,7 @@ module.exports = function(app) {
           if (err)
 
             return res.status(500).send(err);
-          var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','" + img_name + "','" + gender + "','" + email + "','" + hometown + "','" + status + "')";
+          var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`,`birthdate`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','" + img_name + "','" + gender + "','" + email + "','" + hometown + "','" + status + "','" + bdate + "')";
 
           var query = db.query(sql, function(err, result) {
 
