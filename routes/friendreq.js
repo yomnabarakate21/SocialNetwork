@@ -52,8 +52,6 @@ module.exports = function(app) {
 
   app.post('/sendfriendreq', urlencodedParser, function(req, res) {
 
-console.log("i am here my id : "+req.body.id +" frieanID: "+req.body.idf);
-
     friendship = new Friendship({
       user_id1: req.body.id,
       user_id2: req.body.idf,
