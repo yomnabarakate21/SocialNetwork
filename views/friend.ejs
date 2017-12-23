@@ -85,7 +85,6 @@ for(var i=0;i<postsdata.length;i++){%>
       <li>
           <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
           <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
-          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img img-circle" >
           <%=postsdata[i].firstname %>
             <%=postsdata[i].lastname %>
         </a>
@@ -96,7 +95,7 @@ for(var i=0;i<postsdata.length;i++){%>
       </h3>
       <br>
       <%if(postsdata[i].image!=null){%>
-      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image">
+      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image" width="60" height="60">
       <%}%>
       </li>
       <br>

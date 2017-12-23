@@ -18,7 +18,7 @@
             <div class="alert alert-danger col-sm-12">
               <%= message %>
             </div>
-            <% } else {%> 
+            <% } else {%>
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <h3 class="panel-title"><%=data[0].firstname%>, <%=data[0].lastname%></h3>
@@ -36,6 +36,30 @@
                             </td>
                           </tr>
                           <tr>
+                            <td>Home Town:</td>
+                            <td>
+                              <%=data[0].hometown%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Matrital Status</td>
+                            <td>
+                              <%=data[0].marital_status%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Email</td>
+                            <td>
+                              <%=data[0].email%>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Birthdate</td>
+                            <td>
+                              <%=data[0].birthdate%>
+                            </td>
+                          </tr>
+                          <tr>
                             <td>Mobile:</td>
                             <td>
                               <%=data[0].phone_number1%>
@@ -50,19 +74,24 @@
               <% } %>
                 <div class=friends>
                   <h2>Friends</h2>
+                  <% if (friendsdata.length<1){%>
+                    <h4> You don't have friends yet! </h4>
+                <% }
+                else { %>
                   <ul>
                     <% for(var i=0;i<friendsdata.length;i++){%>
                       <li>
 
                           <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-                        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
+                        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>" style="color:#87CEEB">
 
-                          <%=friendsdata[i].firstname %>
-                            <%=friendsdata[i].lastname %>
+                        <strong> <%=friendsdata[i].firstname %>
+                            <%=friendsdata[i].lastname %> </strong>
                         </a>
                       </li>
                       <%}%>
                   </ul>
+                  <% } %>
                 </div>
                 <div class="posts">
                   <h2>Posts</h2>
@@ -72,10 +101,9 @@
                 for(var i=0;i<postsdata.length;i++){%>
                       <li>
                           <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-                          <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
-                          <img id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" class="small-img img-circle" >
-                          <%=postsdata[i].firstname %>
-                            <%=postsdata[i].lastname %>
+                          <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>" style="color:#87CEEB" style="font-size:meduim">
+                      <strong >   <%=postsdata[i].firstname %>
+                            <%=postsdata[i].lastname %>  </strong>
                         </a>
 
                         <br><br><br>
@@ -84,7 +112,7 @@
                       </h3>
                       <br>
                       <%if(postsdata[i].image!=null){%>
-                      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image">
+                      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image" width="90" height="100">
                       <%}%>
                       </li>
                       <br>
