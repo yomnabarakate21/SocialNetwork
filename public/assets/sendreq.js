@@ -1,11 +1,11 @@
 $(document).ready(function(){
   if(document.getElementById("status").value!="friends")
 {
-  document.getElementById("thefriend").style.visibility="hidden";
+$("#thefriend").hide();
 }
-else 
+else
 {
-  document.getElementById("Nofriend").style.visibility="hidden";
+  $("#Nofriend").show();
 }
 
 
@@ -27,8 +27,7 @@ document.getElementById("ignore").style.visibility="hidden";
     var idf =  document.getElementById("idf").value;
 
     var todo={id:id , idf:idf};
-      console.log("my id: "+id+"friend : "+idf);
-  //  console.log('I was pressed');
+
     $.ajax({
       type: 'POST',
       url: '/sendfriendreq',
@@ -50,15 +49,12 @@ else {
     var idf =  document.getElementById("idf").value;
 
     var todo={uid:idf,rid:id };
-      console.log("my id: "+id+"friend : "+idf);
-  //  console.log('I was pressed');
+
     $.ajax({
       type: 'POST',
       url: '/request/ignore',
       data:todo,
       success:function(){
-    //  document.getElementById("status").value="Friend request sent";
-          //document.getElementById("status").disabled=true;
           location.reload();
       }
     });
@@ -70,7 +66,7 @@ else {
 //id beyeb3at le el friend
     var todo={uid:idf , rid:id};
       console.log("my id: "+id+"friend : "+idf);
-  //  console.log('I was pressed');
+
     $.ajax({
       type: 'POST',
       url: '/request/accept',

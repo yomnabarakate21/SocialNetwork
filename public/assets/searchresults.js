@@ -7,7 +7,7 @@ $(function() {
     var email = $('#email');
     var hometown = $('#hometown');
     var caption = $('#caption');
-    var myid= $('#id');
+    var myid = $('#id');
     var searchquery = {
       firstname: firstname.val(),
       lastname: lastname.val(),
@@ -24,18 +24,17 @@ $(function() {
           var result = "";
           for (i = 0; i < data.length; i++) {
 
-            result += '<a href="/friend/profile/'+ data[i].user_id +'">'+
-             '<img  alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/'+data[i].profile_picture+'">'+'<br>'+
-data[i].firstname +"  "+data[i].lastname+ '</a> <br /><br>';
+            result += '<a href="/friend/profile/' + data[i].user_id + '">' +
+              '<img  alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/' + data[i].profile_picture +'"   "height="100" width="100"" >' + '<br>' +
+              data[i].firstname + "  " + data[i].lastname + '</a> <br /><br>';
 
-              $("#results").html(result);
+            $("#results").html(result);
           }
+        } else {
+          alert('MISSING DATA!');
         }
-      else{
-        alert('MISSING DATA!');
-      }
 
-        }
+      }
 
 
     });
