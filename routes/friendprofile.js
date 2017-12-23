@@ -75,8 +75,17 @@ con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? 
 
 
 // query to get the info of the userhimself
+if (message=="me")
+{
+
+res.writeHead(301,
+ {Location: '/user/homeProfile/'+req.params.id}
+);
+res.end();
 
 
+}
+else
     res.render('friend.ejs', {fdata:result ,status:message, data:data , idf:idf, message1: message1, friendsdata: info , postsdata: posts_info,});
 
       });
