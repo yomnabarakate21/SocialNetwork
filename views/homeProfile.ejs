@@ -72,19 +72,20 @@
                 </div>
               </div>
               <% } %>
+              <h2>Friends</h2>
                 <div class=friends>
-                  <h2>Friends</h2>
+
                   <% if (friendsdata.length<1){%>
-                    <h4> You don't have friends yet! </h4>
+                    <h3 style="margin-top:30px; margin-left:40px;"> You Have NO Friends :( </h3>
                 <% }
                 else { %>
                   <ul>
                     <% for(var i=0;i<friendsdata.length;i++){%>
                       <li>
+                        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
 
-                          <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-                        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>" style="color:#87CEEB">
-
+                          <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture" height="100" width="100" class="img-circle">
+                          <br>
                         <strong> <%=friendsdata[i].firstname %>
                             <%=friendsdata[i].lastname %> </strong>
                         </a>
@@ -98,18 +99,20 @@
                   <br>
                   <ul id="posts">
                     <%if (postsdata.length>0){
-                for(var i=0;i<postsdata.length;i++){%>
-                      <li>
+                      for(var i=0;i<postsdata.length;i++){%>
+                        <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>" style="font-size:meduim; padding:10px; margin-bottom:5px;">
                           <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-                          <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>" style="color:#87CEEB" style="font-size:meduim">
-                      <strong >   <%=postsdata[i].firstname %>
-                            <%=postsdata[i].lastname %>  </strong>
+                      <h3 style="display: inline; font-size:20; margin-left:5px;">
+                          <%=postsdata[i].firstname %>
+                            <%=postsdata[i].lastname %>  </h3>
                         </a>
+                      <li>
 
-                        <br><br><br>
-                        <h3 id="post-caption">
+
+                        <br>
+                        <h4 class ="capt" id="post-caption">
                         <%=postsdata[i].caption %>
-                      </h3>
+                      </h4>
                       <br>
                       <%if(postsdata[i].image!=null){%>
                       <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image" width="90" height="100">
