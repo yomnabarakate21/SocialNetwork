@@ -1,10 +1,11 @@
 var db = require('../models/mysql-connection.js');
+var md5 = require('md5');
 module.exports = function(app) {
   message = '';
   app.post('/', function(req, res, next) {
     var post = req.body;
     var name = post.user_name;
-    var pass = post.password;
+    var non_pass = post.password;
     var fname = post.first_name;
     var lname = post.last_name;
     var mob = post.mob_no;
@@ -12,6 +13,7 @@ module.exports = function(app) {
     var hometown = post.home_town;
     var email = post.email;
     var status = post.marital_status;
+    var pass=md5(non_pass);
     var q = "SELECT * FROM MyUser WHERE email = ?";
     var query = db.query(q, email, function(err, result) {
       if (result.length > 0) {

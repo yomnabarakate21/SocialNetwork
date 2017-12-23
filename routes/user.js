@@ -67,7 +67,7 @@ module.exports = function(app) {
           } else {
             posts_info=[];
             con.query("SELECT * FROM Post JOIN MyUser ON MyUser.user_id= Post.poster_id WHERE Post.ispublic='1'",function(err,presult){
-              
+
               con.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", id, function(err, result) {
 
                 if (result.length <= 0)

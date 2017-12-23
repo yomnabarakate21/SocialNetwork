@@ -14,9 +14,7 @@ console.log('I was pressed');
     url: '/login',
     data:user,
     success: function(data){
-    alert(data.id);
     window.location.href = "/user/home/"+data.id;
-
   },
   error: function(error){
     if(error.responseText=='showAlert')

@@ -1,4 +1,4 @@
-<<html lang="en">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,6 @@
 
 <body>
   <% include partials/nav.ejs %>
-
           <div class="reqhead panel-heading">
           <h1>Friend Requests</h1>
         </div>
@@ -23,7 +22,6 @@
                 <li>
                   <a href="/friend/profile/<%=friendsdata[i].user_id %>">
                   <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" class="img-circle myimage">
-
                   </a>
                   <div class="friendname">
                   <h1 class="friendname">
@@ -32,10 +30,8 @@
                   </h1>
                 </div>
                 </li>
-
                 <button class ="button" id="accept" name="accept" type="submit" value="<%=friendsdata[i].user_id%>">Accept</button>
                 <button class ="button"name="ignore" type="submit" value="<%=friendsdata[i].user_id%>" >Ignore</button>
-
                   <%}%>
             </ul>
           </div>
@@ -45,4 +41,3 @@
 </body>
 
 </html>
-
