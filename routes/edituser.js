@@ -65,7 +65,15 @@ module.exports = function(app) {
                   var query = con.query("UPDATE MyUser SET  MyUser.profile_picture=? WHERE MyUser.user_id=?", [img_name, req.params.id], function(err, result) {
                     if (err)
                     throw err;
-
+                    else {
+                      file.mv('public/images/post_images/' + file.name, function(err) {
+                      con.query("INSERT INTO `Post` (`caption`, `image`, `ispublic`, `poster_id`) VALUES ('Changed His Profile Picture!',?, '1', ?);",[img_name,req.params.id],function(err,result)
+                      {
+                        if(err)
+                        throw err;
+                    });
+                    });
+                    }
                   });
                 });
 
