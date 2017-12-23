@@ -15,12 +15,16 @@
           <div class="reqhead panel-heading">
           <h1>Friend Requests</h1>
         </div>
+        <%if(friendsdata.length>0){%>
           <div class="friendc panel panel-info">
+
             <div class="panel-body">
+
             <ul class="friend panel">
+
               <%for(var i=0;i<friendsdata.length;i++){%>
                 <li>
-                  <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
+                  <a href="/friend/profile/<%=friendsdata[i].user_id %>">
                   <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" class="img-circle myimage">
                   </a>
                   <div class="friendname">
@@ -33,9 +37,14 @@
                 <button class ="button" id="accept" name="accept" type="submit" value="<%=friendsdata[i].user_id%>">Accept</button>
                 <button class ="button"name="ignore" type="submit" value="<%=friendsdata[i].user_id%>" >Ignore</button>
                   <%}%>
+
             </ul>
           </div>
+
           </div>
+          <%}else {%>
+            <h1 class="NO">You Have NO Requests :(</h1>
+            <%}%>
     </div>
   </div>
 </body>
