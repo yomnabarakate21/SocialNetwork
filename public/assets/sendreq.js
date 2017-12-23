@@ -3,6 +3,11 @@ $(document).ready(function(){
 {
   document.getElementById("thefriend").style.visibility="hidden";
 }
+else 
+{
+  document.getElementById("Nofriend").style.visibility="hidden";
+}
+
 
 if(document.getElementById("status").value!="accept")
 {

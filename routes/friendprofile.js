@@ -69,26 +69,26 @@ con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendsh
 console.log("anaa"+info);
 
 //get all user posts
-con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? ) AS t1 ON MyUser.user_id = t1.poster_id ", req.params.idf,
-  function(err, rows2, fields) {
+con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? ) AS t1 ON MyUser.user_id = t1.poster_id ", req.params.idf,function(err, rows2, fields) {
     setPost(rows2);
 
+//get all public posts
+con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE  Post.ispublic='1' ) AS t1 ON MyUser.user_id = t1.poster_id ",req.params.idf,
+function(err, publicposts, fields){
 
-// query to get the info of the userhimself
+
+//query to get the info of the userhimself
+
 if (message=="me")
 {
 
-res.writeHead(301,
- {Location: '/user/homeProfile/'+req.params.id}
-);
+res.writeHead(301,{Location: '/user/homeProfile/'+req.params.id});
 res.end();
-
-
 }
 else
-    res.render('friend.ejs', {fdata:result ,status:message, data:data , idf:idf, message1: message1, friendsdata: info , postsdata: posts_info,});
+    res.render('friend.ejs', {fdata:result ,status:message, data:data , idf:idf, message1: message1, friendsdata: info , postsdata: posts_info,publicposts:publicposts});
 
-      });
+
       });
       });
       });
@@ -96,7 +96,6 @@ else
 
 
 
-
-
-
+    });
+});
 }
