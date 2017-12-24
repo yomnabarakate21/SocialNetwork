@@ -23,18 +23,17 @@ module.exports = function(app) {
     var q = "SELECT * FROM MyUser WHERE email = ?";
     var query = db.query(q, email, function(err, result) {
       if (result.length > 0) {
-        return res.status(200).send('Email taken');
+        res.render('index.ejs',{taken:'THIS EMAIL IS ALREADY TAKEN!'});
       }
-    });
+  else{
     if (!req.files.uploaded_image) {
-      
+
       if (gender == "male")
         var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`,`birthdate`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','m_default.jpg','" + gender + "','" + email + "','" + hometown + "','" + status + "','" + bdate + "')";
       else
         var sql = "INSERT INTO `MyUser`(`firstname`,`lastname`,`phone_number1`,`nickname`, `password` ,`profile_picture`,`gender`,`email`,`hometown`,`marital_status`,`birthdate`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','f_default.jpg','" + gender + "','" + email + "','" + hometown + "','" + status + "','" + bdate + "')";
 
       var query = db.query(sql, function(err, result) {
-        console.log('am here! and near');
         res.redirect('/user/home/' + result.insertId);
       });
 
@@ -65,11 +64,13 @@ module.exports = function(app) {
         });
       }
     }
-  });
+  }
+});
+});
 
 
   app.get('/', function(req, res, next) {
-    res.render('index.html');
+    res.render('index.ejs',{taken:'ok'});
   });
 
 

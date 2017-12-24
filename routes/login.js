@@ -23,8 +23,6 @@ module.exports = function(app) {
 
   app.post('/login', urlencodedParser, function(req, res) {
     var encrypt_pass = md5(req.body.password);
-    console.log(req.body.name);
-    console.log(encrypt_pass);
     con.query("SELECT * FROM MyUser WHERE email =? AND password =?", [req.body.name, encrypt_pass],
       function(err, rows, fields) {
         if (rows.length > 0)

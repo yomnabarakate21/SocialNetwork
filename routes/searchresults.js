@@ -29,10 +29,9 @@ module.exports = function(app) {
 
     {
 
-      data=[];
+      data = [];
       res.send(data);
-    }
-    else {
+    } else {
 
       var myQuery = "select * from MyUser where "
       if (checkNullString(firstname) === false)
@@ -60,7 +59,7 @@ module.exports = function(app) {
 
         }
       });
-  }
+    }
   }); //end of app.post
 
   //get the search page on requesting it.
@@ -68,16 +67,15 @@ module.exports = function(app) {
     id = req.params.id;
     var no_of_req;
     //get all reqs
-    mysql.query("SELECT COUNT (*) AS fcount FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'",[req.params.id],
+    mysql.query("SELECT COUNT (*) AS fcount FROM MyUser JOIN Friendship ON user_id=user_id1 where user_id2=? AND status='0'", [req.params.id],
       function(err, crows, fields) {
-        no_of_req=crows[0].fcount;
-        console.log("this is the no of req "+ crows[0].fcount);
+        no_of_req = crows[0].fcount;
       });
     mysql.query("SELECT * FROM MyUser WHERE MyUser.user_id=?", req.params.id, function(err, rows, fields) {
       if (err) throw err;
       res.render('search.ejs', {
         data: rows,
-        no_of_req:no_of_req,
+        no_of_req: no_of_req,
       });
       next();
     });
