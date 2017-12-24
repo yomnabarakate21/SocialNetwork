@@ -1,0 +1,8 @@
+.panel-title,.addbutt{
+  display: inline;
+}
+
+.addbutt
+{
+  float: right;
+}

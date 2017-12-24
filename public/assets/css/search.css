@@ -1,0 +1,40 @@
+
+form{
+  border: 1px solid  	#6495ED;
+  padding: 20px 20px 20px 50px ;
+  background-color:  	#E0FFFF;
+
+}
+
+#lastname,#hometown{
+margin-left: 25%;
+}
+
+#label1{
+  color: 	#FF1493;
+}
+
+#submitSearchForm{
+background-color: #00FFFF;
+ border: none;
+ color:  	#6495ED;
+ padding: 15px 32px;
+ text-align: center;
+ text-decoration: none;
+
+ display: inline-block;
+ font-size: 16px;
+ margin: 4px 2px;
+ cursor: pointer;
+ margin-left:90%;
+
+}
+h1{
+color:#00BFFF;
+}
+
+#caption{
+width: 95%;
+height: 80px;
+}
+

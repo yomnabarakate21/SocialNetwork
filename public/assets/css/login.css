@@ -1,0 +1,31 @@
+.button{
+  width:16%;
+  margin-top: 10px;
+  margin-left:40%;
+  margin-top: 30px;
+}
+.box{
+  margin-bottom: 20px;
+}
+body{
+  background-image: url("green.jpg");
+  background-color: linear-gradient(-80deg,white,#b2b2b2 );
+  }
+.panel
+  {
+    background: rgba(255,255,255,0.6 );
+  }
+  .mybtn
+  {
+    float:right;
+    margin-bottom: 5px;
+  }
+  .panel-title,.mybtn
+  {
+    display: inline-block;
+  }
+  .panel-title
+  {
+    padding-bottom: 3px;
+    font-size: 19px;
+  }

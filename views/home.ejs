@@ -1,0 +1,106 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Home Sweet Home</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="text/css" href="/public/assets/css/homeprofile.css" />
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/homeprofile.css" />
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/home.css" />
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="/public/assets/home.js" type="text/javascript">
+    </script>
+
+  </head>
+
+  <body>
+    <% include partials/nav.ejs %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
+          <% if (message.length > 0) { %>
+            <div class="alert alert-danger col-sm-12">
+              <%= message %>
+            </div>
+            <% } else {%>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><%=data[0].firstname%> <%=data[0].lastname%></h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://localhost:4001/public/images/upload_images/<%=data[0].profile_picture%>" class="img-circle img-responsive"  height="100" width="100"> </div>
+                    <div class=" col-md-9 col-lg-9 ">
+                      <table class="table table-user-information">
+                        <tbody>
+                          <tr>
+                            <td>User Name:</td>
+                            <td>
+                              <%=data[0].nickname%>
+                            </td>
+                          </tr>
+                          <tr></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3>What's New? </h3>
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Post to Your Profile</h3>
+                  </div>
+                    <div id="post_div" class="newpost panel-body">
+                  <form enctype="multipart/form-data" action="/post" method="POST">
+                    <input type="text" value="<%=data[0].user_id%>" for="id_label" name="id_label"id="id_label" hidden></input>
+                  <textarea class="pcapt" for="caption" name="caption" id="caption" placeholder="  Hey <%=data[0].firstname%>, your friends are waiting for your updates..!"></textarea>
+                  <br>
+
+                      <div class="pfile">
+                      <h4>Media</h4>
+                      <input class="ppic" type="file" id='postpic' name="postpic"/>
+                    </div>
+                  <br>
+                  <select name="privacy" id="privacy">
+                    <option value="1">Public</option>
+                       <option value="0">Private</option>
+                     </select>
+                  <button class="pbutt"type="submit" id="postbtn">Post!</button>
+                </form>
+                </div>
+              </div>
+                <div id="posts-div" class=posts>
+                        <h2>Posts</h2>
+                        <ul id="posts">
+                          <%if (postsdata.length>0){
+                        for(var i=0;i<postsdata.length;i++){%>
+                          <a id="post-a" href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].poster_id %>" style="font-size:16;">
+                            <img class="img-circle"id="post-img" alt="Poster Pic" src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" width="80" height="80" style="padding:10px;">
+                            <%=postsdata[i].firstname %>
+                              <%=postsdata[i].lastname %>
+                          </a>
+                          <br>
+                          <label style="padding:5px; font-size:13;"><%=postsdata[i].posted_time %> </label>
+                            <li>
+                              <label class ="capt" id="post-caption" style="padding:5px; font-size:17;font-weight:400;" >
+                              <%=postsdata[i].caption %>
+                            </label>
+                            <%if(postsdata[i].image!=null){%>
+                              <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image">
+                              <%}%>
+                            </li>
+                            <br>
+                            <%}}
+                          else{%>
+                              <h4>NO POSTS TO DISPLAY! </h4>
+                              <%} %>
+                        </ul>
+
+              <% } %>
+</div>
+</div>
+</div>
+  </body>
+
+  </html>
