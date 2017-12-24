@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  if(document.getElementById("status").value!="friends")
+  if(document.getElementById("status").value!="Friends")
 {
 $("#thefriend").hide();
 $("#Nofriend").show();
@@ -11,18 +11,18 @@ else
 }
 
 
-if(document.getElementById("status").value!="accept")
+if(document.getElementById("status").value!="Accept")
 {
 document.getElementById("ignore").style.visibility="hidden";
 }
 
-  if (document.getElementById("status").value!="send friend request"&&document.getElementById("status").value!="accept")
+  if (document.getElementById("status").value!="Add Friend"&&document.getElementById("status").value!="Accept")
   {
       document.getElementById("status").disabled=true;
   }
 
   //not friend
- if (document.getElementById("status").value=="send friend request"){
+ if (document.getElementById("status").value=="Add Friend"){
 
   $("#status").click(function() {
     var id =  document.getElementById("id").value;
@@ -36,7 +36,7 @@ document.getElementById("ignore").style.visibility="hidden";
       data:todo,
       success:function(){
 
-        document.getElementById("status").value="Friend request sent";
+        document.getElementById("status").value="Request Sent";
           document.getElementById("status").disabled=true;
           location.reload();
       }
@@ -73,8 +73,6 @@ else {
       url: '/request/accept',
       data:todo,
       success:function(){
-        alert('request sent');
-
        document.getElementById("status").value="accepted";
          document.getElementById("status").disabled=true;
           location.reload();

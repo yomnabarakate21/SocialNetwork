@@ -28,9 +28,9 @@
 }
 .friendname
 {
-  margin-left: 80px;
+  /* margin-left: 55px; */
   font-size: 25;
-  text-align: left;
+  text-align: center;
 }
 .reqhead{
   margin-left: 40px;

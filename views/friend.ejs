@@ -5,20 +5,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/assets/css/homeprofile.css" />
+  <link rel="stylesheet" type="text/css" href="/public/assets/css/home.css" />
+  <link rel="stylesheet" type="text/css" href="/public/assets/css/friend.css" />
 
    <script src="/public/assets/sendreq.js" type="text/javascript"></script>
 </head>
 <body>
   <% include partials/nav.ejs %>
+  <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title"><%=fdata[0].firstname%>, <%=fdata[0].lastname%></h3>
+      <div class="addbutt">
+      <input class="addbutt" type=button id="status" value="<%=status%>" > </input>
+        <input style="margin-right:5px;" class="addbytt"type=button id="ignore" value="Ignore" > </input>
+      <input id="id" value="<%=data[0].user_id%>"  hidden>  </input>
+      <input id="idf" value="<%=idf%>" hidden></input>
+    </div>
     </div>
 
-  <input type=button id="status" value="<%=status%>" > </input>
-    <input type=button id="ignore" value="ignore" > </input>
-  <input id="id" value="<%=data[0].user_id%>"  hidden>  </input>
-  <input id="idf" value="<%=idf%>" hidden></input>
 
 <div id="thefriend" >
 <div class="panel-body">
@@ -61,15 +68,14 @@
       </table>
     </div>
   </div>
+    <h2>Friends</h2>
 <div class=friends>
-  <h2>Friends</h2>
   <ul>
     <% for(var i=0;i<friendsdata.length;i++){%>
       <li>
-
-          <img src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture"  class="img-circle" width="60" height="60">
         <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
-
+          <img style="margin-bottom:5px;"src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture"  class="img-circle" width="100" height="100">
+          <br>
           <%=friendsdata[i].firstname %>
             <%=friendsdata[i].lastname %>
         </a>
@@ -77,27 +83,26 @@
       <%}%>
   </ul>
 </div>
+<h2>Posts</h2>
 <div class="posts">
-  <h2>Posts</h2>
   <br>
   <ul id="posts">
     <%if (postsdata.length>0){
-for(var i=0;i<postsdata.length;i++){%>
+      for(var i=0;i<postsdata.length;i++){%>
+    <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
+    <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
+    <%=postsdata[i].firstname %>
+      <%=postsdata[i].lastname %>
+  </a>
+  <br>
+  <label style="padding:5px; font-size:13;"><%=postsdata[i].posted_time %> </label>
       <li>
-          <img src="http://localhost:4001/public/images/upload_images/<%=postsdata[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-          <a href="/friend/profile/<%=data[0].user_id%>/<%=postsdata[i].user_id %>">
-          <%=postsdata[i].firstname %>
-            <%=postsdata[i].lastname %>
-        </a>
-        <br>
-<label>  <%=postsdata[i].posted_time %></label>
-        <br><br>
-        <h3 id="post-caption">
+        <label class ="capt" id="post-caption" style="padding:5px; font-size:17;font-weight:400;" >
         <%=postsdata[i].caption %>
-      </h3>
+      </label>
       <br>
       <%if(postsdata[i].image!=null){%>
-      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image" width="60" height="60">
+      <img src="http://localhost:4001/public/images/post_images/<%=postsdata[i].image%>" class="image">
       <%}%>
       </li>
       <br>
@@ -144,22 +149,21 @@ for(var i=0;i<postsdata.length;i++){%>
     <ul id="posts">
       <%if (publicposts.length>0){
   for(var i=0;i<publicposts.length;i++){%>
-        <li>
-            <img src="http://localhost:4001/public/images/upload_images/<%=publicposts[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
-            <a href="/friend/profile/<%=data[0].user_id%>/<%=publicposts[i].user_id %>">
-            <%=publicposts[i].firstname %>
-              <%=publicposts[i].lastname %>
-          </a>
+    <a href="/friend/profile/<%=data[0].user_id%>/<%=publicposts[i].user_id %>">
+      <img src="http://localhost:4001/public/images/upload_images/<%=publicposts[i].profile_picture%>" alt="profilepicture" height="60" width="60" class="img-circle">
 
-          <br>
-          <label>  <%=postsdata[i].posted_time %></label>
-          <br><br>
-          <h3 id="post-caption">
+    <%=publicposts[i].firstname %>
+      <%=publicposts[i].lastname %>
+  </a>
+  <br>
+  <label style="padding:5px; font-size:13;"><%=postsdata[i].posted_time %> </label>
+        <li>
+          <label class ="capt" id="post-caption" style="padding:5px; font-size:17;font-weight:400;" >
           <%=publicposts[i].caption %>
-        </h3>
+        </label>
         <br>
         <%if(publicposts[i].image!=null){%>
-        <img src="http://localhost:4001/public/images/post_images/<%=publicposts[i].image%>" class="image" height="60" width="60">
+        <img src="http://localhost:4001/public/images/post_images/<%=publicposts[i].image%>" class="image">
         <%}%>
         </li>
         <br>
@@ -169,6 +173,7 @@ for(var i=0;i<postsdata.length;i++){%>
           <%} %>
     </ul>
       </div>
+</div>
 </div>
 </div>
 </div>

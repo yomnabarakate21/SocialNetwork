@@ -44,34 +44,36 @@ message ="me"
   //
   }
   else{
-  message="send friend request";
+  message="Add Friend";
 }
 }
 else if(dataa[0].status==1)  {
-  message="friends";
+  message="Friends";
 }
 
 else if(dataa[0].status==0 && dataa[0].user_id1==req.params.id )
 {
 
-  message="you already send friend request"
+  message="Request Sent"
 }
 
 else {
-message="accept";
+message="Accept";
 }
 
 con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Friendship WHERE ((Friendship.user_id1 =? OR Friendship.user_id2 =? )AND Friendship.status='1'))as t1  ON ((MyUser.user_id= t1.user_id1 OR MyUser.user_id= t1.user_id2) AND MyUser.user_id<>?) ", [req.params.idf, req.params.idf, req.params.idf],
   function(err, friendData, fields) {
-
+    console.log("ana henaaaa");
+    console.log(friendData);
     setValue(friendData);
+console.log("anaa"+info);
 
 //get all user posts
-con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? ) AS t1 ON MyUser.user_id = t1.poster_id ORDER BY t1.posted_time DESC", req.params.idf,function(err, rows2, fields) {
+con.query(" SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id=? ) AS t1 ON MyUser.user_id = t1.poster_id ", req.params.idf,function(err, rows2, fields) {
     setPost(rows2);
 
 //get all public posts
-con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id= ? AND Post.ispublic='1' ) AS t1 ON MyUser.user_id = t1.poster_id ORDER BY t1.posted_time DESC",req.params.idf,
+con.query("SELECT * FROM MyUser JOIN (SELECT * FROM Post WHERE Post.poster_id= ? AND Post.ispublic='1' ) AS t1 ON MyUser.user_id = t1.poster_id ",req.params.idf,
 function(err, publicposts, fields){
 
 
