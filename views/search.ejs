@@ -16,31 +16,39 @@
 <body>
     <% include partials/nav.ejs %>
 
-  <h1>Search Page</h1>
+  <h2 style="padding:15px;">Advanced Search</h2>
   <input id="id" value="<%=data[0].user_id %>" hidden ></input>
-  <h2>Choose your category</h2>
-
+<br>
 <form id='searchForm' >
-  <br><br>
-  <input type="text" id="firstname" name="firstname" placeholder="firstname">
-
-   <input type="text" id="lastname" name="lastname" placeholder="lastname">
-     <br> <br>
-   <input type="text" id="email" name="email" placeholder="Email">
-
-   <input type="text" id="hometown" name="hometown" placeholder="Hometown">
-<br><br>
-   <input type="text" id="caption" name="caption" placeholder="Part of Post Caption">
-     <br><br><br><br>
-   <input type="submit" id="submitSearchForm" name="submitSearchForm" value="search">
+  <br>
+  <h3 style="margin-left:80px;">Choose Your Category</h3>
+<br>
+  <label> Firstname </label>
+  <input class="form-control" style="width:90%;" type="text" id="firstname" name="firstname" placeholder="Firstname">
+  <br>
+  <label > Lastname </label>
+   <input class="form-control" style="width:90%;" type="text" id="lastname" name="lastname" placeholder="Lastname">
+   <br>
+     <label>Emaill </label>
+   <input class="form-control" style="width:90%;" type="text" id="email" name="email" placeholder="Email">
+   <br>
+   <label>Hometown</label>
+   <input class="form-control" style="width:90%;" type="text" id="hometown" name="hometown" placeholder="Hometown">
+<br>
+  <label>Caption </label>
+   <input type="text" id="caption" class="form-control"  style="width:90%;" name="caption" placeholder="Part of Post Caption">
+     <br><br>
+   <input type="submit" id="submitSearchForm" name="submitSearchForm" value="Search" class="btn btn-info form-control button" style="width:50%; margin-left:95px;">
 <br><br>
 </form>
-
+<br>
 <label id="label1"><a href="#" id='link'></a></label>
+<div  style="width:80%; margin:160px;display:inline-grid; border: 1px solid #b7e1fc; border-radius:7px;   background-color: rgba(180,180,180,0.2);
+">
+<h2 style="margin:0px auto; padding-top:10px">Results</h2>
 <div id="results">
-
 </div>
-
+</div>
 </body>
 
 </html>
