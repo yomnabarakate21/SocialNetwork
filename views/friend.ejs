@@ -73,8 +73,7 @@
   <ul>
     <% for(var i=0;i<friendsdata.length;i++){%>
       <li>
-        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>">
-          <img style="margin-bottom:5px;"src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture"  class="img-circle" width="100" height="100">
+        <a href="/friend/profile/<%=data[0].user_id%>/<%=friendsdata[i].user_id %>"> <img style="margin-bottom:5px; " src="http://localhost:4001/public/images/upload_images/<%=friendsdata[i].profile_picture%>" alt="profilepicture"  class="img-circle" width="100" height="100">
           <br>
           <%=friendsdata[i].firstname %>
             <%=friendsdata[i].lastname %>

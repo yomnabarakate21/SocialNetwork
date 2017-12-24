@@ -16,7 +16,7 @@ module.exports = function(app) {
 
 
   app.post('/searchresults', urlencodedParser, function(req, res) {
-    
+
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var email = req.body.email;
@@ -34,17 +34,34 @@ module.exports = function(app) {
       res.send(data);
     } else {
 
+      var counter = 0 ;
       var myQuery = "select * from MyUser where "
-      if (checkNullString(firstname) === false)
+      if (checkNullString(firstname) === false){
         myQuery += " firstname = " + mysql.escape(firstname);
-      if (checkNullString(lastname) === false)
+counter++;
+      }
+      if (checkNullString(lastname) === false){
+        if (counter>0) myQuery+=" AND ";
         myQuery += " lastname = " + mysql.escape(lastname);
-      if (checkNullString(email) === false)
+      counter++;
+    }
+      if (checkNullString(email) === false){
+        if (counter>0) myQuery+=" AND ";
         myQuery += " email = " + mysql.escape(email);
-      if (checkNullString(hometown) === false)
+        counter++;
+      }
+      if (checkNullString(hometown) === false){
+        if (counter>0) myQuery+=" AND ";
         myQuery += "  hometown = " + mysql.escape(hometown);
-      if (checkNullString(caption) === false)
-        myQuery += "  email like " + mysql.escape('%' + caption + '%');
+        counter++;
+      }
+      if (checkNullString(caption) === false){
+        if (counter>0) myQuery+=" AND ";
+        myQuery += "  caption like " + mysql.escape('%' + caption + '%');
+        counter++;
+      }
+      myQuery+=";"
+      console.log(myQuery);
 
       user.query(myQuery, function(err, rows, fields) {
         if (err) {
